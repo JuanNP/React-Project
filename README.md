@@ -1,6 +1,9 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 # TDS-Final-Proyect
 =======
+=======
+>>>>>>> 69192d0 (Initial commit)
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -71,4 +74,10 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<<<<<<< HEAD
 >>>>>>> 058f32e (Initialize project using Create React App)
+=======
+=======
+# TDS-Final-Proyect
+>>>>>>> 6dafe75 (Initial commit)
+>>>>>>> 69192d0 (Initial commit)
