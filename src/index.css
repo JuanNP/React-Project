@@ -5,12 +5,15 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+<<<<<<< HEAD
   background-color: #eeeeee;
   height: 100%;
 }
 
 html {
   height: 100%;
+=======
+>>>>>>> 058f32e (Initialize project using Create React App)
 }
 
 code {
