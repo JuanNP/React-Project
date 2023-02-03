@@ -1,5 +1,6 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 # TDS-Final-Proyect
 =======
 # Getting Started with Create React App
@@ -73,9 +74,12 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 058f32e (Initialize project using Create React App)
 =======
 =======
 # TDS-Final-Proyect
 >>>>>>> 6dafe75 (Initial commit)
 >>>>>>> 69192d0 (Initial commit)
+=======
+>>>>>>> 058f32e (Initialize project using Create React App)
