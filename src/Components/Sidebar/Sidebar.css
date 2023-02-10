@@ -1,0 +1,12 @@
+.MenuLink {
+    color: white;
+    text-decoration: none;
+    font-size: 1.5em;
+    font-weight: bold;
+    padding: 1em;
+}
+
+.MenuLink:hover {
+    transition: 0.2s;
+    transform: scale(1.1);
+}
