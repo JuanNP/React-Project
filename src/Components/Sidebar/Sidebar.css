@@ -1,12 +1,43 @@
 .MenuLink {
-    color: white;
+    color: #00376f;
     text-decoration: none;
     font-size: 1.5em;
     font-weight: bold;
     padding: 1em;
+    background: -webkit-linear-gradient(90deg, rgba(0,55,111,1) 37%, rgba(0,212,255,1) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .MenuLink:hover {
     transition: 0.2s;
     transform: scale(1.1);
 }
+
+.linkText {
+    margin-left: 5px;
+}
+
+@media screen and (max-width: 768px) {
+    .sidebar {
+      display: none !important;
+    }
+  }
+
+.menuMovil {
+    z-index: 1;
+    background-color: #FFFFFF;
+    transform: translateX(-100%);
+
+  }
+
+.drawerCloseButton:hover {
+    cursor: pointer;
+}
+
+.menuButton:hover {
+    cursor: pointer;
+}     

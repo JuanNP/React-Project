@@ -36,7 +36,7 @@ function App() {
                 Disponible
               </Text>
               <Button 
-                width='6vw' 
+                width='200px' 
                 height='3vh' 
                 borderRadius='20px'
                 fontSize='15px'
