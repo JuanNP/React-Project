@@ -2,12 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-import TopBar from './Components/Navbar';
-import SideBar from './Components/Sidebar/Sidebar';
+import TopBar from './Components/Navbar/Navbar';
+import SideBar, { SideBarMovil } from './Components/Sidebar/Sidebar';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+    <SideBarMovil />
     <TopBar />
     <SideBar />
     <App />    
