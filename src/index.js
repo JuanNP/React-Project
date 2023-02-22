@@ -10,7 +10,7 @@ root.render(
   <React.StrictMode>
     <SideBarMovil />
     <TopBar />
-    <SideBar />
+
     <App />    
   </React.StrictMode>
 );
