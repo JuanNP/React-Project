@@ -1,43 +1,67 @@
+.sidebar {
+  display: flex;
+  flex-direction: row;
+  min-height: 95vh;
+  width: auto;
+  float: inline-start;
+}
+
 .MenuLink {
-    color: #00376f;
-    text-decoration: none;
-    font-size: 1.5em;
-    font-weight: bold;
-    padding: 1em;
-    background: -webkit-linear-gradient(90deg, rgba(0,55,111,1) 37%, rgba(0,212,255,1) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+  color: #00376f;
+  text-decoration: none;
+  font-size: 1.5em;
+  font-weight: bold;
+  padding: 1em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
 }
 
 .MenuLink:hover {
-    transition: 0.2s;
-    transform: scale(1.1);
+  transform: scale(1.1);
+  transition: 0.3s;
+  color: #ffffff;
+  background-color: #00376f;
+  width: 70%;
 }
 
 .linkText {
-    margin-left: 5px;
+  margin-left: 5px;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.sidebar:hover .linkText {
+  animation: slideIn 0.3s forwards;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-10%);
+  }
+  to {
+    transform: translateX(0);
+  }
 }
 
 @media screen and (max-width: 768px) {
-    .sidebar {
-      display: none !important;
-    }
+  .sidebar {
+    display: none !important;
   }
+}
 
 .menuMovil {
-    z-index: 1;
-    background-color: #FFFFFF;
-    transform: translateX(-100%);
-
-  }
+  z-index: 1;
+  background-color: #ffffff;
+  transform: translateX(-100%);
+}
 
 .drawerCloseButton:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .menuButton:hover {
-    cursor: pointer;
-}     
+  cursor: pointer;
+}

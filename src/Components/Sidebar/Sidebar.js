@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './Sidebar.css'
 import { Box, Container, Link, Hide, Text } from '@chakra-ui/react'
 import { RiDashboardLine } from 'react-icons/ri'
@@ -11,27 +11,44 @@ import { Drawer, DrawerOverlay, DrawerContent, DrawerCloseButton, DrawerHeader, 
 
 
 const SideBar = () => {
+
+  const [showText, setShowText] = useState(false);
+
+  const handleMouseOver = () => {
+    setShowText(true);
+  };
+
+  const handleMouseOut = () => {
+    setShowText(false);
+  };
+
     return (
-      <Container className='sidebar' display='flex' flexDirection='row' minHeight= '95vh' width='auto' float='inline-start'>
+      <Container className='sidebar' display='flex' flexDirection='row' minHeight= '95vh' width='auto' float='inline-start' onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
         <Box bg='white' w="100%" p={4} textAlign='center'>
           <Box display='flex' flexDirection='column' alignItems='baseline' h='100%'>
             <Link className='MenuLink' href='/'> 
               <RiDashboardLine size='1.5rem'/>
+              {showText && <Text className='linkText' fontSize='1rem'>Dashboard</Text>}
             </Link>
             <Link className='MenuLink' href='/'> 
               <BiTransfer size='1.5rem'/>
+              {showText && <Text className='linkText' fontSize='1rem'>Transferencias</Text>}
             </Link>
-            <Link className='MenuLink' href='/'> 
+            <Link className='MenuLink' href='/'>
               <MdOutlineAttachMoney size='1.7rem'/>
+              {showText && <Text className='linkText' fontSize='1rem'>Pagos</Text>}
             </Link>
-            <Link className='MenuLink' href='/'> 
+            <Link className='MenuLink' href='/'>
               <BsCreditCard2BackFill size='1.2rem'/>
+              {showText && <Text className='linkText' fontSize='1rem'>Tarjetas</Text>}
             </Link>
             <Link className='MenuLink' href='/'> 
               <MdManageAccounts size='1.5rem'/>
+              {showText && <Text className='linkText' fontSize='1rem'>Cuentas</Text>}
             </Link>
-            <Link className='MenuLink' href='/'> 
+            <Link className='MenuLink' href='/'>
               <MdAccountCircle size='1.5rem'/>
+              {showText && <Text className='linkText' fontSize='1rem'>Perfil</Text>}
             </Link>
           </Box>
         </Box>
