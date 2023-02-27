@@ -1,17 +1,19 @@
 import './App.css';
 import { Box, Container, Stat, Text, StatHelpText, Heading, Button } from '@chakra-ui/react'
-import Home from './Components/home/home';
-import Login from './Components/login/login';
+import Home from './pages/home/home';
+import Login from './pages/login/login';
 import SideBar from './Components/Sidebar/Sidebar';
+import TopBar from './Components/Navbar/Navbar';
 
 function App() {
   return (
-    <Login></Login>
-    // <div>
-    //   <SideBar></SideBar>
-    //   <Home></Home>
+    //<Login></Login>
+    <div>
+      <TopBar></TopBar>
+      <SideBar></SideBar>
+      <Home></Home>
 
-    // </div>
+    </div>
   )
 }
 
