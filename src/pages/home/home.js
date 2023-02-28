@@ -1,7 +1,7 @@
 import '../../App.css';
 import { Box, Container, Stat, Text, StatHelpText, Heading, Button } from '@chakra-ui/react'
 
-function Home() {
+export const Home = () => {
   return (
     <Container centerContent>
       <Box maxW='sm' borderRadius='10' borderStyle='solid' borderWidth='1px' borderColor='lightgrey' overflow='hidden' bg='white' pl='20' w='40vw' mt='50px'>
@@ -63,5 +63,3 @@ function Home() {
     </Container>
   )
 }
-
-export default Home;
