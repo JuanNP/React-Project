@@ -1,9 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
-import TopBar from './Components/Navbar/Navbar';
-import { createBrowserRouter, RouterProvider, Link } from 'react-router-dom';
+import { RouterProvider } from 'react-router-dom';
 import { ChakraProvider } from '@chakra-ui/react';
 import { ROUTER } from './router/router';
 

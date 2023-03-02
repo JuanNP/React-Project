@@ -1,8 +1,17 @@
 import '../../App.css';
-import { Box, Container, Stat, Text, StatHelpText, Heading, Button } from '@chakra-ui/react'
+import TopBar from '../../Components/Navbar/Navbar';
+import SideBar, { SideBarMovil } from '../../Components/Sidebar/Sidebar';
+import { ChakraProvider } from '@chakra-ui/react';
+import { Box, Container, Stat, Text, Heading, Button } from '@chakra-ui/react'
 
 export const Home = () => {
   return (
+    <>
+    <ChakraProvider>
+      <TopBar></TopBar>
+      <SideBar></SideBar>
+      <SideBarMovil></SideBarMovil>
+    </ChakraProvider>
     <Container centerContent>
       <Box maxW='sm' borderRadius='10' borderStyle='solid' borderWidth='1px' borderColor='lightgrey' overflow='hidden' bg='white' pl='20' w='40vw' mt='50px'>
         <Box p='6'>
@@ -61,5 +70,6 @@ export const Home = () => {
         </Box>
       </Box>
     </Container>
+    </>
   )
 }
