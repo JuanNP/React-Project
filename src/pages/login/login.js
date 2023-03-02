@@ -3,6 +3,7 @@ import { Grid, Container, Paper, Avatar, Typography , TextField, Button} from '@
 import{makeStyles} from '@material-ui/core/styles'
 import fondo from '../../assets/images/fondo.jpg'
 import { LockOutlined as LockOutlinedIcon} from '@mui/icons-material'
+import {Link} from 'react-router-dom'
 
 const useStyles = makeStyles(theme=>({
   root:{
@@ -54,9 +55,11 @@ const Login = () => {
           <form className={classes.form}>
             <TextField fullWidth autoFocus color='primary' margin='normal' variant='outlined' label='introduzca su usuario' name='nombre'/>
             <TextField fullWidth type='password' color='primary' margin='normal' variant='outlined' label='introduzca su contraseña' name='contra'/>
-           <Button fullWidth variant='contained' color='primary' className={classes.button}>
-              Sign In
-           </Button>
+            <Link to='/home'>
+              <Button fullWidth variant='contained' color='primary' className={classes.button}>
+                  Sign In
+              </Button>
+            </Link>
           </form>
         </div>
       </Container>

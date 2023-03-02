@@ -1,6 +1,6 @@
 import React from "react"
 import "./Navbar.css"
-import { Box, Button, ButtonGroup, Flex, Heading, Spacer, HStack, Container, Link, Avatar, Text } from "@chakra-ui/react"
+import { Box, Flex, Heading, Spacer, HStack, Link } from "@chakra-ui/react"
 import { RiBankFill } from 'react-icons/ri'
 
 
