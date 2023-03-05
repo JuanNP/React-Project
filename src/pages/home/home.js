@@ -1,4 +1,3 @@
-import '../../App.css';
 import TopBar from '../../Components/Navbar/Navbar';
 import SideBar, { SideBarMovil } from '../../Components/Sidebar/Sidebar';
 import { ChakraProvider } from '@chakra-ui/react';
@@ -12,17 +11,16 @@ export const Home = () => {
       <SideBar></SideBar>
       <SideBarMovil></SideBarMovil>
     </ChakraProvider>
-    <Container centerContent>
-      <Box maxW='sm' borderRadius='10' borderStyle='solid' borderWidth='1px' borderColor='lightgrey' overflow='hidden' bg='white' pl='20' w='40vw' mt='50px'>
+    <Container centerConten>
+      <Box borderRadius='10' borderStyle='solid' borderWidth='1px' borderColor='lightgrey' overflow='hidden' bg='white' w='30vw' mt='100px'>
         <Box p='6'>
-          <Box display='flex' alignItems='baseline'>
+          <Box>
             <Stat>
               <Heading
-                color='gray.500'
+                color='gray.700'
                 fontWeight='medium'
                 fontSize='1.45rem'
-                letterSpacing='wide'
-                mt='0'
+                m='2'
               >
                 Saldo actual
               </Heading>
@@ -30,17 +28,16 @@ export const Home = () => {
                 color='gray.900'
                 fontWeight='bold'
                 fontSize='3rem'
-                letterSpacing='wide'
                 fontFamily='roboto'
                 m='0'
+                whiteSpace='break-spaces'
               >
-              $ 1,000,000
+              $1,000
               </Text>
               <Text 
-                color='gray.500'
+                color='gray.700'
                 fontWeight='medium'
                 fontSize='1.1rem'
-                letterSpacing='wide'
               >
                 Disponible
               </Text>

@@ -1,13 +1,11 @@
 import React, { useState } from 'react'
 import './Sidebar.css'
-import { Box, Container, Link, Hide, Text } from '@chakra-ui/react'
+import { Drawer, DrawerOverlay, DrawerContent, DrawerCloseButton, DrawerHeader, DrawerBody, IconButton, useDisclosure, Box, Container, Link, Hide, Text, Spacer } from "@chakra-ui/react"
+import { MdOutlineAttachMoney, MdAccountCircle, MdManageAccounts, MdOutlineLogout } from 'react-icons/md'
 import { RiDashboardLine } from 'react-icons/ri'
 import { BiTransfer } from 'react-icons/bi'
-import { MdOutlineAttachMoney, MdAccountCircle, MdManageAccounts } from 'react-icons/md'
 import { BsCreditCard2BackFill } from 'react-icons/bs'
-import { useDisclosure } from "@chakra-ui/react"
 import { RxHamburgerMenu } from 'react-icons/rx'
-import { Drawer, DrawerOverlay, DrawerContent, DrawerCloseButton, DrawerHeader, DrawerBody, IconButton } from "@chakra-ui/react"
 
 
 const SideBar = () => {
@@ -23,14 +21,13 @@ const SideBar = () => {
   };
 
     return (
-      <Container className='sidebar' display='flex' flexDirection='row' minHeight= '95vh' width='auto' float='inline-start' onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
-        <Box bg='white' w="100%" p={4} textAlign='center'>
-          <Box display='flex' flexDirection='column' alignItems='baseline' h='100%'>
-            <Link className='MenuLink' href='/'> 
+      <Container className='sidebar' display='flex' flexDirection='row' width='auto' float='inline-start' position='absolute' onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
+          <Box display='flex' flexDirection='column' h='100%'>
+            <Link className='MenuLink' href='/dashboard'> 
               <RiDashboardLine size='1.5rem'/>
               {showText && <Text className='linkText' fontSize='1rem'>Dashboard</Text>}
             </Link>
-            <Link className='MenuLink' href='/'> 
+            <Link className='MenuLink' href='/transferencias'> 
               <BiTransfer size='1.5rem'/>
               {showText && <Text className='linkText' fontSize='1rem'>Transferencias</Text>}
             </Link>
@@ -50,8 +47,12 @@ const SideBar = () => {
               <MdAccountCircle size='1.5rem'/>
               {showText && <Text className='linkText' fontSize='1rem'>Perfil</Text>}
             </Link>
+            <Spacer />
+            <Link className='MenuLink' href='/#'>
+              <MdOutlineLogout size='1.5rem'/>
+              {showText && <Text className='linkText' fontSize='1rem'>Salir</Text>}
+            </Link>
           </Box>
-        </Box>
       </Container>
     )
   }
