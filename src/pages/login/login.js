@@ -1,11 +1,8 @@
 import React from 'react'
 import { Grid, Container, Paper, Avatar, Typography , TextField, Button} from '@material-ui/core'
 import{makeStyles} from '@material-ui/core/styles'
-import fondo from '../../assets/images/fondo.jpg'
 import { LockOutlined as LockOutlinedIcon} from '@mui/icons-material'
 import {Link} from 'react-router-dom'
-import { transform } from 'framer-motion'
-import { transition } from '@chakra-ui/react'
 
 const useStyles = makeStyles(theme=>({
   root:{
