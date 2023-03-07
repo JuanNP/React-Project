@@ -12,7 +12,7 @@ const TopBar = () => {
           color='white'
           _hover={{ textDecoration: 'none' }}
         >
-          <HStack spacing='1' p='0.5vw'>
+          <HStack spacing='1' p='0.3vw'>
               <RiBankFill size='2em'/>
               <Heading size='xl' >Banca Web</Heading>
           </HStack>
