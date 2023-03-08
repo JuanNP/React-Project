@@ -3,7 +3,6 @@ import './Sidebar.css'
 import { Drawer, DrawerOverlay, DrawerContent, DrawerCloseButton, DrawerHeader, DrawerBody, IconButton, useDisclosure, Box, Container, Link, Hide, Text, Spacer } from "@chakra-ui/react"
 import { MdOutlineAttachMoney, MdAccountCircle, MdOutlineLogout, MdSpaceDashboard } from 'react-icons/md'
 import { BiTransferAlt } from 'react-icons/bi'
-import { BsCreditCard2BackFill } from 'react-icons/bs'
 import { RxHamburgerMenu } from 'react-icons/rx'
 import { FaUserFriends } from 'react-icons/fa'
 
@@ -30,20 +29,20 @@ const SideBar = () => {
               <BiTransferAlt size='1.5rem'/>
               {showText && <Text className='linkText' fontSize='1rem'>Transferencias</Text>}
             </Link>
-            <Link className='MenuLink' href='/'>
+            <Link className='MenuLink' href='/pagos'>
               <MdOutlineAttachMoney size='1.7rem'/>
               {showText && <Text className='linkText' fontSize='1rem'>Pagos</Text>}
             </Link>
-            <Link className='MenuLink' href='/'> 
+            <Link className='MenuLink' href='/beneficiarios'> 
               <FaUserFriends size='1.5rem'/>
               {showText && <Text className='linkText' fontSize='1rem'>Beneficiarios</Text>}
             </Link>
-            <Link className='MenuLink' href='/'>
+            <Link className='MenuLink' href='/perfil'>
               <MdAccountCircle size='1.5rem'/>
               {showText && <Text className='linkText' fontSize='1rem'>Perfil</Text>}
             </Link>
             <Spacer />
-            <Link className='MenuLink' href='/#'>
+            <Link className='MenuLink' href='/#' onClick={() => alert("Quieres salir de tu cuenta?")}>
               <MdOutlineLogout size='1.5rem'/>
               {showText && <Text className='linkText' fontSize='1rem'>Salir</Text>}
             </Link>
@@ -67,7 +66,7 @@ const SideBar = () => {
           fontSize='1.7rem'
           onClick={onOpen}
           position='fixed'
-          top='5'
+          top='0'
           left='5'
           zIndex='0'
         />
@@ -88,30 +87,30 @@ const SideBar = () => {
                 </DrawerHeader>
 
               <DrawerBody>
-                <Box display='flex' flexDirection='column' alignItems='baseline' h='100%'>
-                  <Link className='MenuLink' href='/'> 
+                <Box display='flex' flexDirection='column' alignItems='baseline' h='100%' ml='-5'>
+                  <Link className='MenuLink' href='/dashboard'> 
                     <MdSpaceDashboard size='1.5rem'/>
-                    <Text className='linkText' fontSize='1.2rem' fontWeight='bold' color='black'>Dashboard</Text>
+                    <Text className='linkText'>Dashboard</Text>
                   </Link>
-                  <Link className='MenuLink' href='/'> 
+                  <Link className='MenuLink' href='/transferencias'> 
                     <BiTransferAlt size='1.5rem'/>
-                    <Text className='linkText' fontSize='1.2rem'>Transferencias</Text>
+                    <Text className='linkText'>Transferencias</Text>
                   </Link>
-                  <Link className='MenuLink' href='/'> 
+                  <Link className='MenuLink' href='/pagos'> 
                     <MdOutlineAttachMoney size='1.7rem'/>
-                    <Text className='linkText' fontSize='1.2rem'>Pagos</Text>
+                    <Text className='linkText'>Pagos</Text>
                   </Link>
-                  <Link className='MenuLink' href='/'> 
-                    <BsCreditCard2BackFill size='1.2rem'/>
-                    <Text className='linkText' fontSize='1.2rem'>Tarjetas</Text>
-                  </Link>
-                  <Link className='MenuLink' href='/'> 
+                  <Link className='MenuLink' href='/beneficiarios'> 
                     <FaUserFriends size='1.5rem'/>
-                    <Text className='linkText' fontSize='1rem'>Beneficiarios</Text>
+                    <Text className='linkText'>Beneficiarios</Text>
                   </Link>
-                  <Link className='MenuLink' href='/'> 
+                  <Link className='MenuLink' href='/perfil'> 
                     <MdAccountCircle size='1.5rem'/>
-                    <Text className='linkText' fontSize='1.2rem'>Perfil</Text>
+                    <Text className='linkText'>Perfil</Text>
+                  </Link>
+                  <Link className='MenuLink' href='/#' onClick={() => alert("Quieres salir de tu cuenta?")}>
+                    <MdOutlineLogout size='1.5rem'/>
+                    <Text className='linkText'>Salir</Text>
                   </Link>
                 </Box>
               </DrawerBody>

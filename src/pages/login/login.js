@@ -13,13 +13,13 @@ const useStyles = makeStyles(theme=>({
     height: '100vh'
   },
   container:{
-     height: '60%',
-     marginTop: theme.spacing(10),
-     [theme.breakpoints.down(400 + theme.spacing(2)+2)]:{
-      marginTop: 0,
-       width: '100%',
-       height: '100%'
-     }
+      height: '60%',
+      marginTop: theme.spacing(10),
+      [theme.breakpoints.down(400 + theme.spacing(2)+2)]:{
+        marginTop: 0,
+        width: '100%',
+        height: '100%'
+      }
   },
   div:{
     marginTop: theme.spacing(8),

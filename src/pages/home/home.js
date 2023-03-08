@@ -12,7 +12,7 @@ export const Home = () => {
       <SideBarMovil></SideBarMovil>
     </ChakraProvider>
     <Container centerConten>
-      <Box borderRadius='10' borderStyle='solid' borderWidth='1px' borderColor='lightgrey' overflow='hidden' bg='white' w='30vw' mt='100px'>
+      <Box borderRadius='10' borderStyle='solid' borderWidth='1px' borderColor='lightgrey' overflow='hidden' bg='white' w='100%' mt='100px'>
         <Box p='6'>
           <Box>
             <Stat>
@@ -51,6 +51,7 @@ export const Home = () => {
                 bg='#00376f'
                 p='20px'
                 mt='20px'
+                onClick={ url => window.location.href = '/transferencias'}
 
                 _hover={{
                   transform: 'scale(1.05)',
