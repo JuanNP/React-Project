@@ -1,17 +1,13 @@
-import TopBar from '../../Components/Navbar/Navbar';
-import SideBar, { SideBarMovil } from '../../Components/Sidebar/Sidebar';
-import { ChakraProvider } from '@chakra-ui/react';
 import { Box, Container, Stat, Text, Heading, Button } from '@chakra-ui/react'
+import { useNavigate } from 'react-router-dom'
 
 export const Home = () => {
+
+  const navigate = useNavigate();
+
   return (
     <>
-    <ChakraProvider>
-      <TopBar></TopBar>
-      <SideBar></SideBar>
-      <SideBarMovil></SideBarMovil>
-    </ChakraProvider>
-    <Container centerConten>
+    <Container centerContent>
       <Box borderRadius='10' borderStyle='solid' borderWidth='1px' borderColor='lightgrey' overflow='hidden' bg='white' w='100%' mt='100px'>
         <Box p='6'>
           <Box>
@@ -51,7 +47,7 @@ export const Home = () => {
                 bg='#00376f'
                 p='20px'
                 mt='20px'
-                onClick={ url => window.location.href = '/transferencias'}
+                onClick={() => navigate('/transferencias')}
 
                 _hover={{
                   transform: 'scale(1.05)',
