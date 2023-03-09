@@ -62,7 +62,7 @@ const Login = () => {
           <form className={classes.form}>
             <TextField fullWidth autoFocus color='primary' margin='normal' variant='outlined' label='introduzca su usuario' name='nombre'/>
             <TextField fullWidth type='password' color='primary' margin='normal' variant='outlined' label='introduzca su contraseña' name='contra'/>
-            <Link to='/dashboard'>
+            <Link to='dashboard'>
               <Button fullWidth variant='contained' className={classes.button}>
                   Sign In
               </Button>
