@@ -85,7 +85,7 @@ export const ResponseSideBar = () => {
 const BaseSideBar = ({ showText, onOpen, navigate, handleMouseOver, handleMouseOut }) => {
     return (
       <React.Fragment>
-        <Container className='sidebar' display='flex' flexDirection='row' width='auto' float='inline-start' position='absolute' onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
+        <Container className='sidebar' display='flex' flexDirection='row' width='auto' position='absolute' onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
             <Box display='flex' flexDirection='column' h='100%'>
               <Link className='MenuLink' onClick={() => navigate('/dashboard')}> 
                 <MdSpaceDashboard/>
@@ -122,7 +122,6 @@ const BaseSideBar = ({ showText, onOpen, navigate, handleMouseOver, handleMouseO
   const { isOpen, onOpen, onClose } = useDisclosure();
     return (
       <>
-        <Hide above='768px'>
         <IconButton
           className='menuButton'
           bg='transparent'
@@ -131,12 +130,11 @@ const BaseSideBar = ({ showText, onOpen, navigate, handleMouseOver, handleMouseO
           color='white'
           fontSize='1.7rem'
           onClick={onOpen}
-          position='fixed'
+          position='absolute'
           top='0'
           left='5'
           zIndex='0'
         />
-        </Hide>
         <Box >
         <Drawer placement='left' onClose={onClose} isOpen={isOpen}>
           <DrawerOverlay />

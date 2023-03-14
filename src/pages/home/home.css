@@ -1,0 +1,25 @@
+Td {
+    max-width: 40vw;
+    white-space: break-spaces;
+}
+
+
+
+.contenedor {
+    display: block;
+    width: 60%;
+}
+
+@media screen and (max-width: 768px) {
+    .contenedor {
+        width: 95vw;
+        overflow-x: hidden;
+        white-space: break-spaces;
+    }
+
+    td {
+        max-width: 20vw;
+        font-size: 0.8em;
+
+    }
+}
