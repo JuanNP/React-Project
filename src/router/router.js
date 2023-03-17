@@ -7,6 +7,9 @@ import { Beneficiarios } from '../pages/beneficiarios/beneficiarios'
 import { Perfil } from '../pages/perfil/perfil'
 import Layout from '../Components/Layout/Layout';
 
+import ChooseUserName from '../pages/login/chooseUserName'
+import SignOut from '../Components/signout';
+
 export const ROUTER = createBrowserRouter([
   {
     route:"/",
@@ -37,5 +40,13 @@ export const ROUTER = createBrowserRouter([
     {
       path: "*",
       element: <Login />,
-    }
+    },
+    {
+      path: 'choose-username',
+      element: <ChooseUserName />,
+    },
+    {
+      path: 'signout',
+      element: <SignOut  />,
+    },
 ]);

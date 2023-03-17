@@ -35,7 +35,7 @@ export const ResponseSideBar = () => {
 
   const handleload = () => {
     onClose();
-    navigate('/login')
+    navigate('/signout')
   }
 
   const handleResponsiveLogout = ( ) => {
