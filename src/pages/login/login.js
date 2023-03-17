@@ -1,9 +1,23 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
+import {
+  auth,
+  registerNewUser,
+} from "../../firebase/firebase";
+import { useNavigate } from "react-router-dom";
+import AuthProvider from '../../Components/authProvider'
+
 import { Grid, Container, Paper, Avatar, Typography , TextField, Button} from '@material-ui/core'
 import{makeStyles} from '@material-ui/core/styles'
 import { LockOutlined as LockOutlinedIcon} from '@mui/icons-material'
-import {Link} from 'react-router-dom'
-
+/*
+  Stages:
+  0: initiated
+  1: loading
+  2: login completed
+  3: login but no username
+  4: not logged
+*/
 const useStyles = makeStyles(theme=>({
   root:{
     background: 'linear-gradient(90deg, rgba(0,55,111,1) 25%, rgba(0,212,255,1) 100%)',
@@ -49,29 +63,67 @@ const useStyles = makeStyles(theme=>({
 }))
 
 const Login = () => {
-  const classes = useStyles()
+  const classes = useStyles();
+
+  const navigate = useNavigate();
+  const [state, setState] = useState(1);
+
+  async function handleOnClick(){
+    const googleProvider = new GoogleAuthProvider();
+    const signInWithGoogle = async () => {
+      try {
+        const res = await signInWithPopup(auth, googleProvider);
+        if (res) {
+          registerNewUser(res.user);
+        }
+      } catch (err) {
+        console.error(err);
+        //alert(err.message);
+      }
+    };
+    signInWithGoogle();
+  }
+
+  if (state === 4) {
+    return (
+      <Grid container component ='main' className={classes.root}>
+        <Container component={Paper} elevation={5}  maxWidth='xs' className={classes.container}>
+          <div className={classes.div}>
+            <Avatar className={classes.avatar}>
+              <LockOutlinedIcon/>
+            </Avatar>
+            <Typography component='h1' variant='h5'>Sign In</Typography>
+            <form className={classes.form}>
+              <TextField fullWidth autoFocus color='primary' margin='normal' variant='outlined' label='Introduzca su usuario' name='nombre'/>
+              <TextField fullWidth type='password' color='primary' margin='normal' variant='outlined' label='Introduzca su contraseña' name='contra'/>
+              {/* <Link to='dashboard'>
+                <Button fullWidth variant='contained' className={classes.button}>
+                    Sign In
+                </Button>
+              </Link> */}
+              <Button fullWidth variant='contained' className={classes.button} onClick={() => handleOnClick()}>
+                    Login with google
+              </Button>
+            </form>
+          </div>
+        </Container>
+      </Grid>
+    )
+  }
 
   return (
-    <Grid container component ='main' className={classes.root}>
-      <Container component={Paper} elevation={5}  maxWidth='xs' className={classes.container}>
-        <div className={classes.div}>
-          <Avatar className={classes.avatar}>
-            <LockOutlinedIcon/>
-          </Avatar>
-          <Typography component='h1' variant='h5'>Sign In</Typography>
-          <form className={classes.form}>
-            <TextField fullWidth autoFocus color='primary' margin='normal' variant='outlined' label='Introduzca su usuario' name='nombre'/>
-            <TextField fullWidth type='password' color='primary' margin='normal' variant='outlined' label='Introduzca su contraseña' name='contra'/>
-            <Link to='dashboard'>
-              <Button fullWidth variant='contained' className={classes.button}>
-                  Sign In
-              </Button>
-            </Link>
-          </form>
-        </div>
-      </Container>
-    </Grid>
-  )
+    <AuthProvider 
+      onUserLoggedIn={(user) => {
+        navigate("/dashboard");
+      }}
+      onUserNotLoggedIn={() => {
+        setState(4);
+      }}
+    >
+      <div>Loading...</div>
+    </AuthProvider>
+  );
+
 }
 
 export default Login
