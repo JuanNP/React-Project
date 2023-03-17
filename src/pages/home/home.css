@@ -3,7 +3,9 @@ Td {
     white-space: break-spaces;
 }
 
-
+Tr {
+    width: 100%;
+}
 
 .contenedor {
     display: block;
@@ -15,6 +17,10 @@ Td {
         width: 95vw;
         overflow-x: hidden;
         white-space: break-spaces;
+    }
+
+    .card {
+        width: 100% !important;
     }
 
     td {

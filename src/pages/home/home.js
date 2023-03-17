@@ -26,7 +26,7 @@ export const Home = () => {
     <>
     <Container maxWidth='100%' mt='55px' centerContent>
       <Box className='contenedor'>
-        <Box borderRadius='10' borderStyle='solid' borderWidth='1px' borderColor='lightgrey' overflow='hidden' bg='white' p='auto' w='50%'>
+        <Box className='card' borderRadius='10' borderStyle='solid' borderWidth='1px' borderColor='lightgrey' overflow='hidden' bg='white' p='auto' w='60%'>
             <Box p='1.5vw'>
               <Stat>
                 <Heading
@@ -85,8 +85,8 @@ export const Home = () => {
             </Box>
         </Box>
 
-        <TableContainer borderRadius='10' borderStyle='solid' borderWidth='1px' borderColor='lightgrey' bg='white' mt='100px'>
-          <Table>
+        <TableContainer className='tablaContainer' borderRadius='10' borderStyle='solid' borderWidth='1px' borderColor='lightgrey' bg='white' mt='100px'>
+          <Table className='tabla'>
             <Thead>
               <Tr>
                 <Th>descripción</Th>
@@ -119,14 +119,14 @@ export const Home = () => {
                 <Td>Exitosa</Td>
               </Tr>
               <Tr>
-                <Td>Transferencia4</Td>
+                <Td>Cuarta prueba para ver como se ve en la tabla de transferencias</Td>
                 <Td>1234567890</Td>
                 <Td>2021-05-01</Td>
                 <Td isNumeric>100000</Td>
                 <Td>Exitosa</Td>
               </Tr>
               <Tr>
-                <Td>Transferencia5</Td>
+                <Td>Quinta prueba para ver como se ve en la tabla de transferencias</Td>
                 <Td>1234567890</Td>
                 <Td>2021-05-01</Td>
                 <Td isNumeric>100000</Td>
