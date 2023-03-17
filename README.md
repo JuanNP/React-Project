@@ -1,12 +1,10 @@
+<<<<<<<<< Temporary merge branch 1
+=========
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 # TDS-Final-Proyect
 =======
-=======
->>>>>>> 69192d0 (Initial commit)
-=======
->>>>>>> 058f32e (Initialize project using Create React App)
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

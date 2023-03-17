@@ -94,8 +94,8 @@ const Login = () => {
             </Avatar>
             <Typography component='h1' variant='h5'>Sign In</Typography>
             <form className={classes.form}>
-              <TextField fullWidth autoFocus color='primary' margin='normal' variant='outlined' label='introduzca su usuario' name='nombre'/>
-              <TextField fullWidth type='password' color='primary' margin='normal' variant='outlined' label='introduzca su contraseña' name='contra'/>
+              <TextField fullWidth autoFocus color='primary' margin='normal' variant='outlined' label='Introduzca su usuario' name='nombre'/>
+              <TextField fullWidth type='password' color='primary' margin='normal' variant='outlined' label='Introduzca su contraseña' name='contra'/>
               {/* <Link to='dashboard'>
                 <Button fullWidth variant='contained' className={classes.button}>
                     Sign In
@@ -125,7 +125,5 @@ const Login = () => {
   );
 
 }
-
-export default Login
 
 export default Login
