@@ -2,6 +2,10 @@ import TopBar from '../../Components/Navbar/Navbar';
 import SideBar, { SideBarMovil } from '../../Components/Sidebar/Sidebar';
 import { Container } from "@chakra-ui/react";
 
+import TopBar from '../../Components/Navbar/Navbar';
+import SideBar, { SideBarMovil } from '../../Components/Sidebar/Sidebar';
+import { Container } from "@chakra-ui/react";
+
 
 export const Transferencias = () => {
   return (
