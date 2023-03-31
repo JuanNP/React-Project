@@ -1,7 +1,7 @@
 import React from 'react'
 import './home.css'
 import { Box, Container, Stat, Text, Heading, Button, Spacer } from '@chakra-ui/react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import {
   Table,
   Thead,
@@ -94,7 +94,9 @@ export const Home = () => {
           <Table className='tabla'>
             <Thead>
               <Tr>
-                <Th>Resumen de Pagos</Th>
+                <Th>
+                  Resumen de Pagos - <Link to='/pagos'>Ver más</Link>
+                </Th>
               </Tr>
             </Thead>
             <Tbody>
