@@ -1,7 +1,7 @@
 import React from 'react'
 import './home.css'
 import { Box, Container, Stat, Text, Heading, Button, Spacer } from '@chakra-ui/react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import {
   Table,
   Thead,
@@ -21,10 +21,14 @@ export const Home = () => {
   const nCuenta = '1234567890'
   const saldo = '100000000'
   const tipoCuenta = 'Cuenta de ahorros'
+  const nCuentatercero = '0987654321'
+  const nombretercero = 'Juan Perez'
+  const describcion = 'Pago de servicios'
+  const montoTransfer = '100000'
 
   return (
     <>
-    <Container maxWidth='100%' mt='55px' centerContent>
+    <Container maxWidth='100%' mt='20px' mb='20px' centerContent>
       <Box className='contenedor'>
         <Box className='card' borderRadius='10' borderStyle='solid' borderWidth='1px' borderColor='lightgrey' overflow='hidden' bg='white' p='auto' w='60%'>
             <Box p='1.5vw'>
@@ -69,6 +73,7 @@ export const Home = () => {
                   bg='#00376f'
                   p='20px'
                   mt='20px'
+                  mb='10px'
                   onClick={() => navigate('/transferencias')}
 
                   _hover={{
@@ -89,48 +94,61 @@ export const Home = () => {
           <Table className='tabla'>
             <Thead>
               <Tr>
-                <Th>descripción</Th>
-                <Th>cuenta</Th>
-                <Th>fecha</Th>
-                <Th>monto</Th>
-                <Th>estado</Th>
+                <Th>
+                  Resumen de Pagos - <Link to='/pagos'>Ver más</Link>
+                </Th>
               </Tr>
             </Thead>
             <Tbody>
               <Tr>
-                <Td>Esta es una descripción de prueba para ver como se ve en la tabla</Td>
-                <Td>1234567890</Td>
-                <Td>2021-05-01</Td>
-                <Td isNumeric>100000</Td>
-                <Td>Exitosa</Td>
+                <Td>{nCuentatercero} - {nombretercero}
+                  <br/>
+                  {describcion}
+                  <br/>
+                  <Text className='monto'>
+                  ${montoTransfer}
+                  </Text>
+                </Td>
               </Tr>
               <Tr>
-                <Td>lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.</Td>
-                <Td>1234567890</Td>
-                <Td>2021-05-01</Td>
-                <Td isNumeric>100000</Td>
-                <Td>Exitosa</Td>
+                <Td>{nCuentatercero} - {nombretercero}
+                  <br/>
+                  {describcion}
+                  <br/>
+                  <Text className='monto'>
+                  ${montoTransfer}
+                  </Text>
+                </Td>
               </Tr>
               <Tr>
-                <Td>tercera prueba para ver como se ve en la tabla de transferencias</Td>
-                <Td>1234567890</Td>
-                <Td>2021-05-01</Td>
-                <Td isNumeric>100000</Td>
-                <Td>Exitosa</Td>
+                <Td>{nCuentatercero} - {nombretercero}
+                  <br/>
+                  {describcion}
+                  <br/>
+                  <Text className='monto'>
+                  ${montoTransfer}
+                  </Text>
+                </Td>
               </Tr>
               <Tr>
-                <Td>Cuarta prueba para ver como se ve en la tabla de transferencias</Td>
-                <Td>1234567890</Td>
-                <Td>2021-05-01</Td>
-                <Td isNumeric>100000</Td>
-                <Td>Exitosa</Td>
+                <Td>{nCuentatercero} - {nombretercero}
+                  <br/>
+                  {describcion}
+                  <br/>
+                  <Text className='monto'>
+                  ${montoTransfer}
+                  </Text>
+                </Td>
               </Tr>
               <Tr>
-                <Td>Quinta prueba para ver como se ve en la tabla de transferencias</Td>
-                <Td>1234567890</Td>
-                <Td>2021-05-01</Td>
-                <Td isNumeric>100000</Td>
-                <Td>Exitosa</Td>
+                <Td>{nCuentatercero} - {nombretercero}
+                  <br/>
+                  {describcion}
+                  <br/>
+                  <Text className='monto'>
+                    ${montoTransfer}
+                  </Text>
+                </Td>
               </Tr>
             </Tbody>
           </Table>
