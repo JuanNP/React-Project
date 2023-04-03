@@ -10,6 +10,7 @@ import AuthProvider from '../../Components/authProvider'
 import { Grid, Container, Paper, Avatar, Typography , TextField, Button} from '@material-ui/core'
 import{makeStyles} from '@material-ui/core/styles'
 import { LockOutlined as LockOutlinedIcon} from '@mui/icons-material'
+import { FcGoogle } from 'react-icons/fc'
 /*
   Stages:
   0: initiated
@@ -59,6 +60,15 @@ const useStyles = makeStyles(theme=>({
       transform: 'scale(1.05)',
       transition: 'all 0.3s ease-in-out'
     }
+  },
+  Googlebutton:{
+    backgroundColor: '#fff',
+    color: 'gray',
+    '&:hover':{
+      backgroundColor: '#fff',
+      transform: 'scale(1.05)',
+      transition: 'all 0.3s ease-in-out'
+    }
   }
 }))
 
@@ -96,13 +106,12 @@ const Login = () => {
             <form className={classes.form}>
               <TextField fullWidth autoFocus color='primary' margin='normal' variant='outlined' label='Introduzca su usuario' name='nombre'/>
               <TextField fullWidth type='password' color='primary' margin='normal' variant='outlined' label='Introduzca su contraseña' name='contra'/>
-              {/* <Link to='dashboard'>
-                <Button fullWidth variant='contained' className={classes.button}>
-                    Sign In
-                </Button>
-              </Link> */}
-              <Button fullWidth variant='contained' className={classes.button} onClick={() => handleOnClick()}>
-                    Login with google
+              <Button fullWidth variant='contained' className={classes.button}>
+                  Sign In
+              </Button>
+              <Button fullWidth variant='contained' className={classes.Googlebutton} onClick={() => handleOnClick()}>
+                  <FcGoogle fontSize={'1.5rem'} />
+                  <span style={{marginLeft: '20px'}}>Sign in with google</span>
               </Button>
             </form>
           </div>
@@ -113,7 +122,7 @@ const Login = () => {
 
   return (
     <AuthProvider 
-      onUserLoggedIn={(user) => {
+      onUserLoggedIn={() => {
         navigate("/dashboard");
       }}
       onUserNotLoggedIn={() => {
