@@ -38,7 +38,7 @@ export const Transferencias = () => {
             </Box>
             <Box className='div'>
               <Text className='label'>Comentario(Opcional)</Text>
-              <Textarea placeholder='Comentario...' />
+              <Textarea className='textarea' placeholder='Comentario...' />
             </Box>
           </Box>
           <Button className="btn">Transferir</Button>
