@@ -1,5 +1,5 @@
 import { Container } from "@chakra-ui/react";
-import "./estilos.css";
+import "./beneficiarios.css";
 
 export const Beneficiarios = () => {
   return (
@@ -36,7 +36,7 @@ export const Beneficiarios = () => {
               </div>
         
 
-                <button type="submit">Guardar</button>
+                <button className="save" type="submit">Guardar</button>
              
             </form>
           </div>

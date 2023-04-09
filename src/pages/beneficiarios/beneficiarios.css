@@ -25,7 +25,7 @@ h3{
     font-size: 18px !important;
     font-weight: 500 !important;
 }
-button{
+.save {
     position: relative;
     left: 50%;
     transform: translate(-50%);
