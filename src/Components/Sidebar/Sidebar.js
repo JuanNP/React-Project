@@ -131,6 +131,7 @@ const BaseSideBar = ({ showText, onOpen, navigate, handleMouseOver, handleMouseO
           fontSize='1.7rem'
           onClick={onOpen}
           position='absolute'
+          position='fixed'
           top='0'
           left='5'
           zIndex='0'
