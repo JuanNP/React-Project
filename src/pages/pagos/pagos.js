@@ -13,7 +13,6 @@ export const Pagos = () => {
     <>
       <Container maxWidth='100%' mt='20px' mb='20px' centerContent>
       <Box className='contenedor'>
-          <h1 className='titulo'>Pagos</h1>
           <TableContainer className='tablaContainer' borderRadius='10' borderStyle='solid' borderWidth='1px' borderColor='lightgrey' bg='white'>
             <Table className='tabla'>
               <Thead>

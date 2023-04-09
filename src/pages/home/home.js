@@ -90,7 +90,7 @@ export const Home = () => {
             </Box>
         </Box>
 
-        <TableContainer className='tablaContainer' borderRadius='10' borderStyle='solid' borderWidth='1px' borderColor='lightgrey' bg='white' mt='100px'>
+        <TableContainer className='tablaContainer' borderRadius='10' borderStyle='solid' borderWidth='1px' borderColor='lightgrey' bg='white' mt='70px'>
           <Table className='tabla'>
             <Thead>
               <Tr>
