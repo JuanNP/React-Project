@@ -7,7 +7,7 @@
     position: relative;
     box-shadow: 0 0 5px #777;
     top: 30px;
-    
+    border-radius: 10px;
 }
 .beneficiario-form > form >div{
     display: flex;
