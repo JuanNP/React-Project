@@ -6,11 +6,12 @@ import {
 } from "../../firebase/firebase";
 import { useNavigate } from "react-router-dom";
 import AuthProvider from '../../Components/authProvider'
-
-import { Grid, Container, Paper, Avatar, Typography , TextField, Button} from '@material-ui/core'
+import { Spinner } from '@chakra-ui/react';
+import { Grid, Container, Paper, Avatar, Typography , TextField, Button, Box } from '@material-ui/core'
 import{makeStyles} from '@material-ui/core/styles'
 import { LockOutlined as LockOutlinedIcon} from '@mui/icons-material'
 import { FcGoogle } from 'react-icons/fc'
+
 /*
   Stages:
   0: initiated
@@ -28,7 +29,7 @@ const useStyles = makeStyles(theme=>({
     height: '100vh'
   },
   container:{
-      height: '60%',
+      height: 'fit-content',
       marginTop: theme.spacing(10),
       [theme.breakpoints.down(400 + theme.spacing(2)+2)]:{
         marginTop: 0,
@@ -62,6 +63,7 @@ const useStyles = makeStyles(theme=>({
     }
   },
   Googlebutton:{
+    margin: theme.spacing(0,0,10),
     backgroundColor: '#fff',
     color: 'gray',
     '&:hover':{
@@ -129,7 +131,17 @@ const Login = () => {
         setState(4);
       }}
     >
-      <div>Loading...</div>
+      <Container centerContent maxW='container' p={4} h='100vh' display='grid' placeItems='center'>
+        <Box>
+          <Spinner
+          thickness='4px'
+          speed='0.65s'
+          emptyColor='gray.200'
+          color='blue.500'
+          size='xl'
+        />
+        </Box>
+      </Container>
     </AuthProvider>
   );
 

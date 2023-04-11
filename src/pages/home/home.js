@@ -1,16 +1,14 @@
 import React from 'react'
 import './home.css'
-import { Box, Container, Stat, Text, Heading, Button, Spacer } from '@chakra-ui/react'
+import { Box, Container, Stat, Text, Heading, Button} from '@chakra-ui/react'
 import { Link, useNavigate } from 'react-router-dom'
 import {
   Table,
   Thead,
   Tbody,
-  Tfoot,
   Tr,
   Th,
   Td,
-  TableCaption,
   TableContainer,
 } from '@chakra-ui/react'
 

@@ -1,7 +1,7 @@
 .sidebar {
   display: flex;
   flex-direction: row;
-  height: 95vh;
+  height: 100%;
   float: inline-start;
   background-color: #e7e7e786;
 }

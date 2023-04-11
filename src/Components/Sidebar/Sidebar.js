@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import './Sidebar.css'
-import { Drawer, DrawerOverlay, DrawerContent, DrawerCloseButton, DrawerHeader, DrawerBody, IconButton, useDisclosure, Box, Container, Link, Hide, Text, Spacer } from "@chakra-ui/react"
+import { Drawer, DrawerOverlay, DrawerContent, DrawerCloseButton, DrawerHeader, DrawerBody, IconButton, useDisclosure, Box, Container, Link, Text, Spacer } from "@chakra-ui/react"
 import { MdOutlineAttachMoney, MdAccountCircle, MdOutlineLogout, MdSpaceDashboard } from 'react-icons/md'
 import { BiTransferAlt } from 'react-icons/bi'
 import { RxHamburgerMenu } from 'react-icons/rx'
@@ -130,7 +130,6 @@ const BaseSideBar = ({ showText, onOpen, navigate, handleMouseOver, handleMouseO
           color='white'
           fontSize='1.7rem'
           onClick={onOpen}
-          position='absolute'
           position='fixed'
           top='0'
           left='5'

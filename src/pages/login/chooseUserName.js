@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Box, Container, Spinner, Button, Heading, Text, Input} from "@chakra-ui/react";
 import { onAuthStateChanged } from "firebase/auth";
 import { useNavigate,Link, } from "react-router-dom";
 import {
@@ -87,22 +88,52 @@ export default function ChooseUserName(){
 
     if(state === 3){
        return (
-            <div> 
-            <h1>Bienvenido {currentUser.displayName}, Para terminar el proceso introduce un nombre de usuario</h1>
+        <Container centerContent maxW='container' h='100vh' display='grid' placeItems='center' bg='linear-gradient(90deg, rgba(0,55,111,1) 25%, rgba(0,212,255,1) 100%)'>
+          <Box display='block' borderRadius='10' borderStyle='solid' borderWidth='1px' borderColor='lightgrey' overflow='hidden' bg='white' p='auto' w='30%'>
+            <Box p='1.5vw'>
+              <Heading as='h1' fontSize='20px' fontWeight='normal' textAlign='center' mb='20px'>
+                Bienvenido <Text color='#034F9B'>{currentUser.displayName}</Text> Para terminar el proceso introduce un nombre de usuario
+              </Heading>
+              <Input type="text" placeholder="Usuario" onInput={handleInputUsername} mt='20px' mb='20px' w='100%'/>
+              <Button 
+                  width='100%'
+                  fontSize='15px'
+                  fontWeight='bold'
+                  color='white'
+                  bg='#00376f'
+                  p='20px'
+                  mt='20px'
+                  mb='10px'
+                  onClick={handleOnClickContinue}
 
-            <div>
-                <input type="text" onInput={handleInputUsername} />
-            </div>
+                  _hover={{
+                    transform: 'scale(1.05)',
+                    transition: '0.3s',
+                    bg: '#034F9B',
+                    cursor: 'pointer'
+                  }}
 
-            <div>
-                <button onClick={handleOnClickContinue}>Finalizar</button>
-            </div>
-        </div>
+                >
+                  Finalizar
+                </Button>
+            </Box>
+          </Box>
+        </Container>
        );
     }
 
     return (
-        <div>loading...</div>
+      <Container centerContent maxW='container' p={4} h='100vh' display='grid' placeItems='center'>
+        <Box>
+          <Spinner
+          thickness='4px'
+          speed='0.65s'
+          emptyColor='gray.200'
+          color='blue.500'
+          size='xl'
+        />
+        </Box>
+      </Container>
     );
 
 }
