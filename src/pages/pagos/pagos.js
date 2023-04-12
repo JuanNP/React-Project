@@ -11,8 +11,8 @@ export const Pagos = () => {
 
   return (
     <>
-      <Container maxWidth='100%' mt='20px' mb='20px' centerContent>
-      <Box className='contenedor'>
+      <Container className='main' maxWidth='100%' centerContent>
+        <Box className='contenedor'>
           <TableContainer className='tablaContainer' borderRadius='10' borderStyle='solid' borderWidth='1px' borderColor='lightgrey' bg='white'>
             <Table className='tabla'>
               <Thead>

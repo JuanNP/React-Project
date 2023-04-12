@@ -26,7 +26,7 @@ export const Home = () => {
 
   return (
     <>
-    <Container maxWidth='100%' mt='20px' mb='20px' centerContent>
+    <Container className='main' maxWidth='100%' centerContent>
       <Box className='contenedor'>
         <Box className='card' borderRadius='10' borderStyle='solid' borderWidth='1px' borderColor='lightgrey' overflow='hidden' bg='white' p='auto' w='60%'>
             <Box p='1.5vw'>
@@ -34,7 +34,7 @@ export const Home = () => {
                 <Heading
                   color='gray.700'
                   fontWeight='medium'
-                  fontSize='1.45rem'
+                  fontSize='calc(1em + 0.45vw)'
                   m='2'
                 >
                   Saldo actual
@@ -42,7 +42,7 @@ export const Home = () => {
                 <Text 
                   color='gray.700'
                   fontWeight='medium'
-                  fontSize='1.1rem'
+                  fontSize='calc(1em + 0.1vw)'
                   position='relative'
                   float='right'
                   textAlign='center'
@@ -54,7 +54,7 @@ export const Home = () => {
                 <Text
                   color='gray.900'
                   fontWeight='bold'
-                  fontSize='3rem'
+                  fontSize='calc(1em + 1.5vw)'
                   fontFamily='roboto'
                   m='0'
                   whiteSpace='break-spaces'

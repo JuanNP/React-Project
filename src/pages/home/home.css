@@ -1,3 +1,8 @@
+.main {
+    max-height: calc(100vh - 55px);
+    overflow-y: scroll;
+}
+
 Td {
     max-width: 40vw;
     white-space: break-spaces;
@@ -10,6 +15,7 @@ Tr {
 .contenedor {
     display: block;
     width: 60%;
+    margin: 25px;
 }
 
 .monto {

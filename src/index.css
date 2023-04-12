@@ -6,10 +6,11 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #eeeeee;
+  max-height: calc(100vh - 70px);
+  margin: 0;
 }
 
 html {
-  height: 100%;
   width: 100%;
 }
 

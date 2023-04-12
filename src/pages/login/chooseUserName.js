@@ -9,6 +9,7 @@ import {
     updateUser,
     userExists,
   } from "../../firebase/firebase";
+import './styles.css'
 
 /*
   Stages:
@@ -78,21 +79,54 @@ export default function ChooseUserName(){
     
     if (state === 6) {
         return (
-          <div>
-            <h1>Felicidades, precione el boton debajo para ir al dashboard</h1>
-    
-            <Link to="/dashboard">Continuar</Link>
-          </div>
+          <Container centerContent maxW='container' h='100vh' bg='linear-gradient(90deg, rgba(0,55,111,1) 25%, rgba(0,212,255,1) 100%)'>
+          <Box display='block' borderRadius='10' borderStyle='solid' borderWidth='1px' borderColor='lightgrey' overflow='hidden' bg='white' mt='70px' p='auto' w='30%'>
+            <Box p='1.5vw'>
+              <Heading as='h1' fontSize='20px' fontWeight='normal' textAlign='center' mb='20px'>
+                ¡Felicidades! Has completado tu registro en <b>Banca Web</b> 
+                <br/>
+                <br/>
+                <Text fontSize='17px' fontWeight='normal' textAlign='center' mb='20px'>
+                  Ahora puedes comenzar a usar la aplicación
+                </Text>
+              </Heading>
+              <Button 
+                  width='100%'
+                  fontSize='15px'
+                  fontWeight='bold'
+                  color='white'
+                  bg='#00376f'
+                  p='20px'
+                  mt='20px'
+                  mb='10px'
+                  onClick={()=>navigate("/dashboard")}
+
+                  _hover={{
+                    transform: 'scale(1.05)',
+                    transition: '0.3s',
+                    bg: '#034F9B',
+                    cursor: 'pointer'
+                  }}
+
+                >
+                  Continuar
+                </Button>
+            </Box>
+          </Box>
+        </Container>
         );
     }
 
     if(state === 3){
        return (
-        <Container centerContent maxW='container' h='100vh' display='grid' placeItems='center' bg='linear-gradient(90deg, rgba(0,55,111,1) 25%, rgba(0,212,255,1) 100%)'>
-          <Box display='block' borderRadius='10' borderStyle='solid' borderWidth='1px' borderColor='lightgrey' overflow='hidden' bg='white' p='auto' w='30%'>
+        <Container centerContent maxW='container' h='100vh' bg='linear-gradient(90deg, rgba(0,55,111,1) 25%, rgba(0,212,255,1) 100%)'>
+          <Box display='block' borderRadius='10' borderStyle='solid' borderWidth='1px' borderColor='lightgrey' overflow='hidden' bg='white' mt='70px' p='auto' w='30%'>
             <Box p='1.5vw'>
               <Heading as='h1' fontSize='20px' fontWeight='normal' textAlign='center' mb='20px'>
-                Bienvenido <Text color='#034F9B'>{currentUser.displayName}</Text> Para terminar el proceso introduce un nombre de usuario
+                Bienvenido <b>{currentUser.displayName}</b> 
+                <br/>
+                <br/>
+                Para terminar el proceso introduce un nombre de usuario
               </Heading>
               <Input type="text" placeholder="Usuario" onInput={handleInputUsername} mt='20px' mb='20px' w='100%'/>
               <Button 
