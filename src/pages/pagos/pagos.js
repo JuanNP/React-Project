@@ -4,10 +4,10 @@ import { Table, Thead, Tbody, Tr, Th, Td, TableContainer, Text } from "@chakra-u
 
 export const Pagos = () => {
 
-  const nCuentatercero = '123456789';
+  const nCuentatercero = '1234567890';
   const nombretercero = 'Juan Perez';
   const describcion = 'Pago de servicios';
-  const montoTransfer = '100.000';
+  const monto = '100.000';
 
   return (
     <>
@@ -27,7 +27,7 @@ export const Pagos = () => {
                     {describcion}
                     <br/>
                     <Text className='monto'>
-                    ${montoTransfer}
+                    ${monto}
                     </Text>
                   </Td>
                 </Tr>
@@ -37,7 +37,7 @@ export const Pagos = () => {
                     {describcion}
                     <br/>
                     <Text className='monto'>
-                    ${montoTransfer}
+                    ${monto}
                     </Text>
                   </Td>
                 </Tr>
@@ -47,7 +47,7 @@ export const Pagos = () => {
                     {describcion}
                     <br/>
                     <Text className='monto'>
-                    ${montoTransfer}
+                    ${monto}
                     </Text>
                   </Td>
                 </Tr>
@@ -57,7 +57,7 @@ export const Pagos = () => {
                     {describcion}
                     <br/>
                     <Text className='monto'>
-                    ${montoTransfer}
+                    ${monto}
                     </Text>
                   </Td>
                 </Tr>
@@ -67,7 +67,7 @@ export const Pagos = () => {
                     {describcion}
                     <br/>
                     <Text className='monto'>
-                      ${montoTransfer}
+                      ${monto}
                     </Text>
                   </Td>
                 </Tr>
@@ -77,7 +77,7 @@ export const Pagos = () => {
                     {describcion}
                     <br/>
                     <Text className='monto'>
-                      ${montoTransfer}
+                      ${monto}
                     </Text>
                   </Td>
                 </Tr>
@@ -87,7 +87,7 @@ export const Pagos = () => {
                     {describcion}
                     <br/>
                     <Text className='monto'>
-                      ${montoTransfer}
+                      ${monto}
                     </Text>
                   </Td>
                 </Tr>
@@ -97,7 +97,7 @@ export const Pagos = () => {
                     {describcion}
                     <br/>
                     <Text className='monto'>
-                      ${montoTransfer}
+                      ${monto}
                     </Text>
                   </Td>
                 </Tr>
