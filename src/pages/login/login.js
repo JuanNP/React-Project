@@ -76,8 +76,8 @@ const useStyles = makeStyles(theme=>({
 
 const Login = () => {
   const classes = useStyles();
-
   const navigate = useNavigate();
+
   const [state, setState] = useState(1);
 
   async function handleOnClick(){
@@ -87,10 +87,10 @@ const Login = () => {
         const res = await signInWithPopup(auth, googleProvider);
         if (res) {
           registerNewUser(res.user);
+          console.log(res.user.photoURL);
         }
       } catch (err) {
         console.error(err);
-        //alert(err.message);
       }
     };
     signInWithGoogle();

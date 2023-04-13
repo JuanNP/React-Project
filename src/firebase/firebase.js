@@ -1,6 +1,7 @@
+import { useEffect, useState } from "react";
 import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
-import { getStorage } from "firebase/storage";
+import { getAuth, onAuthStateChanged, updateProfile  } from "firebase/auth";
+import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
 import { 
     getFirestore, 
     collection,
@@ -10,6 +11,7 @@ import {
     query, 
     where, 
     setDoc,
+    updateDoc,
 } from "firebase/firestore";
 
 const firebaseConfig = {
@@ -21,20 +23,22 @@ const firebaseConfig = {
   appId: process.env.REACT_APP_APPID
 };
 
-// Initialize Firebase
+//#region Initialize Firebase
 export const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const db = getFirestore();
 export const storage = getStorage();
+//#endregion 
 
 export async function registerNewUser(user) {
     try {
       const usersRef = collection(db, "users");
       await setDoc(doc(usersRef, user.uid), user);
+      console.log("El id de este documento es: " + user.uid);
     } catch (e) {
-      console.error("Error adding document: ", e);
+      console.error("Error al añadir el documento: ", e);
     }
-  }
+}
 
 export async function getUserInfo(uid) {
     const docRef = doc(db, "users", uid);
@@ -45,36 +49,68 @@ export async function getUserInfo(uid) {
 export async function userExists(uid) {
     const docRef = doc(db, "users", uid);
     const docSnap = await getDoc(docRef);
-  
     return docSnap.exists();
   }
 
 export async function updateUser(user) {
-    console.log(user);
-    try {
-      const usersRef = collection(db, "users");
-      await setDoc(doc(usersRef, user.uid), user);
-    } catch (e) {
-      console.error("Error adding document: ", e);
-    }
+  try {
+    const usersRef = collection(db, "users");
+    await setDoc(doc(usersRef, user.uid), user);
+  } catch (e) {
+    console.error("Error al añadir el documento: ", e);
   }
+}
 
-export async function fetchLinkData(uid) {
-    const links = [];
-    const q = query(collection(db, "links"), where("uid", "==", uid));
+export async function updateItem(uid, cedula){
+  const usersRef = doc(db, "users", uid);
+  await updateDoc(usersRef, {
+    cedula: cedula,
+  });
+
+  //#region Codigo de prueba
+    // ----------------------------------------------------------------
+    //              Funciona pero sobreescribe el documento
+    // const docRef = doc(db, "users", uid);
+    // const payload = { cedula };
+    // setDoc(docRef, payload);
+    // ----------------------------------------------------------------
+
+    // const q = query(collection(db, "users"), where("uid", "==", uid));
+    // const querySnapshot = await getDoc(q);
+
+    // await updateDoc(querySnapshot, {
+    //   cedula: cedula,
+    // })
+    // .then(() => {
+    //   console.log("Documento actualizado correctamente");
+    // })
+    // .catch((error) => {
+    //   console.error("Error al actualizar el documento: ", error);
+    // });
+
+    // const usersRef = collection(db, "users").doc("5JVJXkA5aENm9a34IVrAlAYUG4M2");
+    // const docSnap = await getDoc(usersRef);
+    // await updateDoc(docSnap, {
+    //   cedula: cedula
+    // });
+    //#endregion
+    
+}
+
+// export async function fetchLinkData(uid) {
+//     const links = [];
+//     const q = query(collection(db, "links"), where("uid", "==", uid));
   
-    const querySnapshot = await getDocs(q);
+//     const querySnapshot = await getDocs(q);
   
-    querySnapshot.forEach((doc) => {
-      // doc.data() is never undefined for query doc snapshots
-      const link = { ...doc.data() };
-      link.docId = doc.id;
-      //console.log(doc.id, " => ", doc.data());
-      console.log(link);
-      links.push(link);
-    });
-    return links;
-  }
+//     querySnapshot.forEach((doc) => {
+//       const link = { ...doc.data() };
+//       link.docId = doc.id;
+//       console.log(link);
+//       links.push(link);
+//     });
+//     return links;
+// }
 
   export async function existsUsername(username) {
     const users = [];
@@ -92,56 +128,4 @@ export async function fetchLinkData(uid) {
   export async function logout() {
     await auth.signOut();
   }
-
-// export async function userExists(uid){
-//     const docRef = doc(db, "users", uid);
-//     const res = await getDoc(docRef);
-//     console.log(res);
-
-//     return res.exists();
-// }
-
-// export async function existsUsername(username){
-//     const users = [];
-//     const docsRef = collection(db, users);
-//     const q = query(docsRef, where('username', '==', username));
-
-//     const querySnapshot = await getDocs(q);
-
-//     querySnapshot.forEach(doc => {
-//         users.push(doc.data());
-//     });
-
-//     return users.length > 0 ? users[0].uid : null;
-// }
-
-// export async function registerNewUser(user){
-//     try {
-//         const colletionRef = collection(db, 'users');
-//         const docRef = doc(colletionRef, user.uid);
-//         await setDoc(docRef, user);
-//     } catch (error) {
-        
-//     }
-// }
-
-// export async function updateUser(user){
-//     try {
-//         const colletionRef = collection(db, 'users');
-//         const docRef = doc(colletionRef, user.uid);
-//         await setDoc(docRef, user);
-//     } catch (error) {
-        
-//     }
-// }
-
-// export async function getUserInfo(uid){
-//     try {
-//         const docRef = doc(db, 'users', uid);
-//         const document = await getDoc(docRef);
-//         return document.data;
-//     } catch (error) {
-        
-//     }
-// }
 

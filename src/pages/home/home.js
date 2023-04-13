@@ -1,4 +1,4 @@
-import React from 'react'
+import { useState, useEffect } from "react";
 import './home.css'
 import { Box, Container, Stat, Text, Heading, Button} from '@chakra-ui/react'
 import { Link, useNavigate } from 'react-router-dom'
@@ -12,17 +12,49 @@ import {
   TableContainer,
 } from '@chakra-ui/react'
 
+import { 
+  auth,
+  existsUsername,
+  getUserInfo,
+  updateUser,
+  userExists,
+  updateItem, 
+} from "../../firebase/firebase";
+import { onAuthStateChanged } from "firebase/auth";
+
 export const Home = () => {
+
+  const [currentUserNumeroCuenta, setCurrentUserNumeroCuenta] = useState(null);
+  const [currentUserSaldo, setCurrentUserSaldo] = useState(null);
+  const [currentUserTipoCuenta, setCurrentUserTipoCuenta] = useState(null);
 
   const navigate = useNavigate();
 
-  const nCuenta = '1234567890'
-  const saldo = '100000000'
-  const tipoCuenta = 'Cuenta de ahorros'
+  const nCuenta = currentUserNumeroCuenta;
+  const saldo = currentUserSaldo;
+  const tipoCuenta = currentUserTipoCuenta;
+
+  //#region Informacion de la tabla de resumen de pagos
   const nCuentatercero = '0987654321'
   const nombretercero = 'Juan Perez'
   const describcion = 'Pago de servicios'
   const montoTransfer = '100000'
+  //#endregion
+
+  useEffect(() => {
+    onAuthStateChanged(auth, callBackAuthState);
+  }, []);
+
+  async function callBackAuthState(user){
+    if(user){
+      const uid = user.uid;
+      const loggedUser = await getUserInfo(uid);
+  
+      setCurrentUserNumeroCuenta(loggedUser.numeroCuenta);
+      setCurrentUserSaldo(loggedUser.saldo); 
+      setCurrentUserTipoCuenta(loggedUser.tipoCuenta);
+    }
+  }
 
   return (
     <>

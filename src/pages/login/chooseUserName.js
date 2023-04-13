@@ -8,6 +8,7 @@ import {
     getUserInfo,
     updateUser,
     userExists,
+    updateItem,
   } from "../../firebase/firebase";
 import './styles.css'
 
@@ -25,6 +26,10 @@ import './styles.css'
 export default function ChooseUserName(){
 
     const [currentUser, setCurrentUser] = useState(null);
+    const [currentUserId, setCurrentUserId] = useState(0);
+    const [currentCedula, setCurrentCedula] = useState(null);
+
+    
     const [state, setState] = useState(0);
     let navigate = useNavigate();
 
@@ -37,25 +42,24 @@ export default function ChooseUserName(){
         if (user) {
           const uid = user.uid;
           console.log(user);
-    
           if (userExists(user.uid)) {
             const loggedUser = await getUserInfo(uid);
             setCurrentUser(loggedUser);
+            setCurrentUserId(loggedUser.uid)
             if (!loggedUser.processCompleted) {
               setState(3);
-              console.log("Falta username");
+              //console.log("Falta username");
+              //console.log(currentUserId);
             } else {
-              console.log("Ya tiene username", state);
+              //console.log("Ya tiene username", state);
               navigate("/dashboard");
             }
           } else {
             navigate("/login");
           }
-        } else {
-          navigate("/login");
         }
     }
-
+    
     function handleInputUsername(e) {
         const tmpUser = currentUser;
         const value = e.target.value;
@@ -72,6 +76,9 @@ export default function ChooseUserName(){
             const tmpUser = currentUser;
             tmpUser.processCompleted = true;
             await updateUser(tmpUser);
+            await updateItem(currentUserId, currentCedula);
+            console.log("Cedula capturada " + currentCedula); 
+            console.log("User ID " + currentUserId);
             setState(6);
           }
         }
@@ -146,6 +153,11 @@ export default function ChooseUserName(){
                     bg: '#034F9B',
                     cursor: 'pointer'
                   }}
+
+            <div>
+                <p>Introduzca su cedula</p>
+                <input type="text" onChange={e => setCurrentCedula(e.target.value)} />
+            </div>
 
                 >
                   Finalizar
