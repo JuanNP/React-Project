@@ -133,9 +133,10 @@ export default function ChooseUserName(){
                 Bienvenido <b>{currentUser.displayName}</b> 
                 <br/>
                 <br/>
-                Para terminar el proceso introduce un nombre de usuario
+                Para terminar el proceso introduce nombre de usuario y cedula
               </Heading>
               <Input type="text" placeholder="Usuario" onInput={handleInputUsername} mt='20px' mb='20px' w='100%'/>
+              <Input type="text" placeholder="Cedula (000-0000000-0)" onChange={e => setCurrentCedula(e.target.value)} mt='20px' mb='20px' w='100%'/>
               <Button 
                   width='100%'
                   fontSize='15px'
@@ -153,12 +154,6 @@ export default function ChooseUserName(){
                     bg: '#034F9B',
                     cursor: 'pointer'
                   }}
-
-            <div>
-                <p>Introduzca su cedula</p>
-                <input type="text" onChange={e => setCurrentCedula(e.target.value)} />
-            </div>
-
                 >
                   Finalizar
                 </Button>

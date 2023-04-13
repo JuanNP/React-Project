@@ -1,5 +1,6 @@
-import { Container } from "@chakra-ui/react";
+import { Avatar, Box, Container, Text, Heading } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
+import "./perfil.css";
 
 import { 
   auth,
@@ -35,18 +36,29 @@ export const Perfil = () => {
 
   return (
     <>
-      <Container centerContent>
-        <h1>Bienvenido { userName }</h1>
-
-        <img src={photoURL} alt="Avatar" />
-
-        <h1>Informacion Personal</h1>
-
-        <p>Cedula: { userCedula }</p>
-        <p>Correo electronico: { userEmail }</p>
-        <p>Nombre de usuario: { userName }</p>
-        <p>Numero de cuenta: { currentUserNumeroCuenta }</p>
-
+      <Container maxWidth='100%' mt='30px' mb='20px' centerContent>
+        <Box className='data-card'>
+          <Heading className='titulo'>Mi perfil</Heading>
+            <Avatar className="avatar" src={photoURL} alt="Avatar"/>
+          <Box className='data-container'>
+            <Box className='data-div'>
+              <Text className='text'>Usuario</Text>
+              <Text className='data'>{userName}</Text>
+            </Box>
+            <Box className='data-div'>
+              <Text className='text'>Cedula</Text>
+              <Text className='data'>{userCedula}</Text>
+            </Box>
+            <Box className='data-div'>
+              <Text className='text'>Correo electronico</Text>
+              <Text className='data'>{userEmail}</Text> 
+            </Box>
+            <Box className='data-div'>
+              <Text className='text'>Numero de cuenta</Text> 
+              <Text className='data'>{currentUserNumeroCuenta}</Text>
+            </Box>
+          </Box>
+        </Box>
       </Container>
     </>
   );
