@@ -16,6 +16,8 @@ export default function AuthProvider({
     const navigate = useNavigate();
 
     useEffect(() => {
+        var min = 1718231256;
+        var max = 3429456756;
         onAuthStateChanged(auth, async (user) => {
           if (user) {
             const uid = user.uid;
@@ -36,9 +38,14 @@ export default function AuthProvider({
               await registerNewUser({
                 uid: user.uid,
                 displayName: user.displayName,
-                profilePicture: "",
+                profilePicture: user.photoURL,
                 username: "",
                 processCompleted: false,
+                saldo: 0,
+                correo: user.email,
+                cedula: "",
+                numeroCuenta: Math.floor(Math.random()*(max-min+1)+min),
+                tipoCuenta: "",
               });
               navigate("/choose-username");
             }
