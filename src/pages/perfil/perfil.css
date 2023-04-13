@@ -57,9 +57,9 @@
 }
 
 .avatar {
-    width: calc(100% - 35vw);
-    height: auto;
+    width: calc(100% - 40vw) !important;
+    height: auto !important;
     margin: 0 auto;
-    display: block;
+    display: block !important;
     
 }
