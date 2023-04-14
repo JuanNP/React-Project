@@ -1,6 +1,7 @@
 .main {
     max-height: calc(100vh - 55px);
     overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 Td {
@@ -31,9 +32,7 @@ Tr {
 
 @media screen and (max-width: 768px) {
     .contenedor {
-        width: 95vw;
-        overflow-x: hidden;
-        white-space: break-spaces;
+        width: 100% !important;
     }
 
     .card {

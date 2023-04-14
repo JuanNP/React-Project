@@ -27,6 +27,11 @@
         width: 95vw;
         overflow-x: hidden;
     }
+
+    .data-div {
+        width: 100% !important;
+        margin: 10px 0px 10px 0px !important;
+    }
 }
 
 .titulo {
@@ -38,12 +43,12 @@
 }
 
 .text{
-    font-size: calc(1em + 0.3vw);
+    font-size: calc(1em + 0.1vw);
     color: #00376f;
 }
 
 .data {
-    font-size: calc(1em + 0.2vw);
+    font-size: calc(100% - 0.1vw);
     border-width: 1px;
     border-color: lightgray;
     border-style: solid;
@@ -52,12 +57,14 @@
 }
 
 .data-div {
-    width: 250px;
+    width: 15vw;
     margin: 10px 20px 10px 20px;
 }
 
 .avatar {
-    width: calc(100% - 40vw) !important;
+    width: calc(100% - 45vw) !important;
+    max-width: 200px !important;
+    min-width: 100px;
     height: auto !important;
     margin: 0 auto;
     display: block !important;

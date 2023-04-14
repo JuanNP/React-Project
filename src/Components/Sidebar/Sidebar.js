@@ -20,7 +20,7 @@ import {
 
 
 export const ResponseSideBar = () => {
-  const [isMobile] = useMediaQuery("(max-width: 760px)");
+  const [isMobile] = useMediaQuery("(max-width: 768px)");
   const [showText, setShowText] = useState(false);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const navigate = useNavigate();
@@ -120,14 +120,14 @@ const BaseSideBar = ({ showText, onOpen, navigate, handleMouseOver, handleMouseO
       <>
         <IconButton
           className='menuButton'
-          bg='transparent'
+          bg='transparent !important'
           border='none'
           icon={<RxHamburgerMenu />}
           color='white'
           fontSize='1.7rem'
           onClick={onOpen}
           position='fixed'
-          top='0'
+          top='2'
           left='5'
           zIndex='0'
         />

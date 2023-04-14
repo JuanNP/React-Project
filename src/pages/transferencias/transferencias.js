@@ -40,7 +40,7 @@ export const Transferencias = () => {
 
   return (
     <>
-      <Container maxWidth='100%' mt='30px' mb='20px' centerContent>
+      <Container className='main' maxWidth='100%' mt='30px' mb='20px' centerContent>
         <Box className='card'>
           <Box className='container'>
             <Box className='div'>

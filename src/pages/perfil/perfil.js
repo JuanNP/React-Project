@@ -36,7 +36,7 @@ export const Perfil = () => {
 
   return (
     <>
-      <Container maxWidth='100%' mt='30px' mb='20px' centerContent>
+      <Container className='main' maxWidth='100%' mt='30px' mb='20px' centerContent>
         <Box className='data-card'>
           <Heading className='titulo'>Mi perfil</Heading>
             <Avatar className="avatar" src={photoURL} alt="Avatar"/>

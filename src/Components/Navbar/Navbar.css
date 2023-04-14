@@ -2,3 +2,31 @@
     background: rgb(0,55,111);
     background: linear-gradient(90deg, rgba(0,55,111,1) 25%, rgba(0,212,255,1) 100%);
 }
+
+.user {
+    color: #00376f !important;
+    font-size: calc(0.35em + 0.35vw);
+    font-weight: bold;
+    text-decoration: none !important;
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border-radius: 50px;
+    border-width: 1px;
+    border-color: #c8c8c8;
+    border-style: solid;
+    padding: 1px;
+    width: fit-content;
+    height: auto !important;
+
+}
+
+.user-name {
+    margin: 0 5px 0 5px;
+}
+
+@media screen and (max-width: 768px) {
+    .user {
+        display: none;
+    }
+}
