@@ -23,9 +23,22 @@ import {
   updateDoc,
   serverTimestamp, 
 } from "firebase/firestore";
+import Swal from 'sweetalert2';
 
 export const Transferencias = () => {
   const navigate = useNavigate();
+
+  const Toast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 5000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+      toast.addEventListener('mouseenter', Swal.stopTimer)
+      toast.addEventListener('mouseleave', Swal.resumeTimer)
+    }
+  })
 
   //Se almacena el saldo del cliente logeado
   const [currentUserSaldo, setCurrentUserSaldo] = useState("");
@@ -152,6 +165,10 @@ export const Transferencias = () => {
 
     if(uidDestinatario && value > 0) {
 
+      Toast.fire({
+        icon: 'success',
+        title: 'Transferencia exitosa'
+      });
       //#region usuario loggeado
       //Actualiza el saldo de quien envia el dinero 
       const usersRefEnvia = doc(db, "users", userUid);
@@ -186,7 +203,10 @@ export const Transferencias = () => {
     navigate("/dashboard");
 
     }else{
-      alert("Debe llenar todos los campos requeridos ");
+      Toast.fire({
+        icon: 'error',
+        title: 'Debe llenar todos los campos'
+      });
     }
   }
 
