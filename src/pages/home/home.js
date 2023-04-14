@@ -26,21 +26,13 @@ export const Home = () => {
   const [currentUserSaldo, setCurrentUserSaldo] = useState(null);
   const [currentUserTipoCuenta, setCurrentUserTipoCuenta] = useState(null);
 
-//Lista de todos los documentos de historial 
+  //Lista de todos los documentos de historial 
   const [infoDocList, setInfoDocList] = useState([{ name: "", id: "" }]);
-  
   const [infoDocListRecibe, setInfoDocListRecibe] = useState([{ name: "", id: "" }]);
 
   const nCuenta = currentUserNumeroCuenta;
   const saldo = currentUserSaldo;
   const tipoCuenta = currentUserTipoCuenta;
-
-  //#region Informacion de la tabla de resumen de pagos
-  // const nCuentatercero = '0987654321'
-  // const nombretercero = 'Juan Perez'
-  // const describcion = 'Pago de servicios'
-  // const montoTransfer = '100000'
-  //#endregion
 
   useEffect(() => {
     onAuthStateChanged(auth, callBackAuthState);
@@ -186,4 +178,5 @@ export const Home = () => {
     </Container>
     </>
   )
+  
 }

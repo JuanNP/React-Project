@@ -8,11 +8,6 @@ import { collection, onSnapshot, query, where } from "firebase/firestore";
 
 export const Pagos = () => {
 
-  // const nCuentatercero = '1234567890';
-  // const nombretercero = 'Juan Perez';
-  // const describcion = 'Pago de servicios';
-  // const monto = '100.000';
-
   const [currentUserNumeroCuenta, setCurrentUserNumeroCuenta] = useState(null);
   const nCuenta = currentUserNumeroCuenta;
 
@@ -21,16 +16,6 @@ export const Pagos = () => {
 
   useEffect(() => {
     onAuthStateChanged(auth, callBackAuthState);
-
-    // if(nCuenta){
-    //   const collectionRef = collection(db, "transacciones");
-    //   const q = query(collectionRef, where("enviaNumCuenta", "==", nCuenta));
-      
-    //   const unsub = onSnapshot(q, (snapshot) =>
-    //     setInfoDocList(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }))));
-      
-    //   return unsub;
-    // }
 
     if(nCuenta){
       const collectionRef = collection(db, "transacciones");
@@ -100,7 +85,6 @@ export const Pagos = () => {
                 </Tr>
               ))
               }
-
               </Tbody>
             </Table>
           </TableContainer>
@@ -109,4 +93,5 @@ export const Pagos = () => {
         
     </>
   );
+
 }
