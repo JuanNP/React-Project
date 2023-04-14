@@ -112,7 +112,7 @@ export const Transferencias = () => {
               
                       {/* Obtener todos los numeros de cuenta  */}
               <Text className='label'>Destinatario</Text>
-              <Select className='input' value={uidDestinatario} placeholder="Elije a quien le quieres enviar dinero" onChange={handleChange} isRequired>
+              <Select value={uidDestinatario} placeholder="Elije a quien le quieres enviar dinero" onChange={handleChange} isRequired>
                 {infoDocList.map((info) => (
                   <option value={info.uid} key={info.uid}>{info.correo}</option>
                 )) 
