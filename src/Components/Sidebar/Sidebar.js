@@ -95,10 +95,10 @@ const BaseSideBar = ({ showText, onOpen, navigate, handleMouseOver, handleMouseO
                 <MdOutlineAttachMoney/>
                 {showText && <Text className='linkText'>Pagos</Text>}
               </Link>
-              <Link className='MenuLink' onClick={() => navigate('/beneficiarios')}> 
+              {/* <Link className='MenuLink' onClick={() => navigate('/beneficiarios')}> 
                 <FaUserFriends/>
                 {showText && <Text className='linkText'>Beneficiarios</Text>}
-              </Link>
+              </Link> */}
               <Link className='MenuLink'onClick={() => navigate('/perfil')}>
                 <MdAccountCircle/>
                 {showText && <Text className='linkText'>Perfil</Text>}

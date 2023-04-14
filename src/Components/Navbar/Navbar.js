@@ -47,6 +47,7 @@ const TopBar = () => {
           <Text className='user-name'>{userName}</Text>
           <Avatar
             w='calc(1.2vw + 1.2vh )'
+            minW={8}
             h='auto'
             src={photoURL} 
             alt="Avatar" 

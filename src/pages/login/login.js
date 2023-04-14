@@ -120,7 +120,7 @@ const Login = () => {
                 <br/>
                 Bienvenido a tu Web Bancaria de confianza
                 <br/>
-                Inicia sesion con Google ya!!
+                Inicia sesion con tu cuenta de Google!!
               </Typography>
               <Button fullWidth variant='contained' className={classes.Googlebutton} onClick={() => handleOnClick()}>
                   <FcGoogle fontSize={'1.5rem'} />
