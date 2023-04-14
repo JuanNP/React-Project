@@ -1,76 +1,203 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { onAuthStateChanged } from 'firebase/auth';
-import { auth, getUserInfo } from '../../firebase/firebase';
+import { 
+  onAuthStateChanged 
+} from 'firebase/auth';
+import { 
+  auth, 
+  getUserInfo, 
+  db,
+  registerTransactionHistory, 
+} from '../../firebase/firebase';
 import { useEffect, useState } from 'react';
 import { Container, Box, Input, Textarea, Button, NumberInput, Text, NumberInputField, Stat, StatLabel, StatNumber } from "@chakra-ui/react";
 import './transferencias.css' 
+import { 
+  onSnapshot, 
+  collection, 
+  query, 
+  where, 
+  getDocs, 
+  doc, 
+  getDoc, 
+  updateDoc,
+  serverTimestamp, 
+} from "firebase/firestore";
 
 export const Transferencias = () => {
-
-  const [currentUserNumeroCuenta, setCurrentUserNumeroCuenta] = useState(null);
-  const [currentUserSaldo, setCurrentUserSaldo] = useState(null);
-  const [currentUserTipoCuenta, setCurrentUserTipoCuenta] = useState(null);
-
   const navigate = useNavigate();
 
-  const nCuenta = currentUserNumeroCuenta;
+  //Se almacena el saldo del cliente logeado
+  const [currentUserSaldo, setCurrentUserSaldo] = useState("");
+  //se almacena el correo del usuario logeado
+  const [currentUserCorreo, setCurrentUserCorreo] = useState(null);
+  //numero de cuenta usuario logeado
+  const [currentUserNumeroCuenta, setCurrentUserNumeroCuenta] = useState(null);
+  //Uid del usuario seleccionado al cual se le hara la transferencia
+  const [uidDestinatario, setUidDestinatario] = useState("");
+  //Lista de todos los documentos
+  const [infoDocList, setInfoDocList] = useState([{ name: "", id: "" }]);
+  //Se guarda el comentario 
+  const [userComment, setUserComment] = useState("");
+  //Saldo del usuario logeado
   const saldo = currentUserSaldo;
-  const tipoCuenta = currentUserTipoCuenta;
+  //Uid del usuario logeado
+  const [userUid, setUserUid] = useState("");
 
   useEffect(() => {
     onAuthStateChanged(auth, callBackAuthState);
-  }, []);
+      //Traer todos los documentos de la collection con query que no sea el usuario loggeado
+      if(currentUserCorreo){
+        const collectionRef = collection(db, "users");
+        const q = query(collectionRef, where("correo", "!=", currentUserCorreo));
+        
+        const unsub = onSnapshot(q, (snapshot) =>
+          setInfoDocList(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }))));
+        
+        return unsub;
+      }
+              //traer todos los documentos de la collection
+    // onSnapshot(collection(db, "users"), (snapshot) =>
+    //   setInfoDocList(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }))));
+
+  }, [currentUserCorreo]);
 
   async function callBackAuthState(user){
     if(user){
+
+      //#region Usuario loggeado
+      //uid del usuario loggeado
       const uid = user.uid;
+      //se guarda toda la info del usuario loggeado
       const loggedUser = await getUserInfo(uid);
-  
-      setCurrentUserNumeroCuenta(loggedUser.numeroCuenta);
-      setCurrentUserSaldo(loggedUser.saldo); 
-      setCurrentUserTipoCuenta(loggedUser.tipoCuenta);
+      //correo del usuario loggeado
+      const correo = loggedUser.correo;
+      //numero de cuenta usuario logeado
+      const nc = loggedUser.numeroCuenta;  
+      //#endregion 
+
+      setUserUid(loggedUser.uid);
+      setCurrentUserSaldo(loggedUser.saldo);
+      setCurrentUserCorreo(correo);
+      setCurrentUserNumeroCuenta(nc);
     }
+  }
+
+  function handleChange (event){
+    setUidDestinatario(event.target.value);
   }
 
   const format = (val) => `$` + val
   const parse = (val) => val.replace(/^\$/, '')
 
-  const [value, setValue] = React.useState('0')
+  //Se almacena el dinero que se va a querer transferir
+  const [value, setDineroTransfer] = React.useState('0')
+
+  //value es el dinero a transferir,
+      //value se le restara del saldo de quien envia y se sumara al saldo de quien recibira
+  //currentUserSaldo es el saldo disponible que tiene el que envia
+  //userComment el comentario que se quisiese añadir,
+  //uidDestinatario se captura el uid del destinatario,
+  //userUid se captura el uid de quien envia 
 
   return (
     <>
       <Container className='main' maxWidth='100%' mt='30px' mb='20px' centerContent>
         <Box className='card'>
           <Box className='container'>
+
             <Box className='div'>
-              <Text className='label'>Numero de cuenta</Text>
-              <Input className='input' placeholder='Numero de cuenta' />
+              {/* <Text className='label'>Numero de cuenta</Text>
+              <Input className='input' placeholder='Numero de cuenta' /> */}
+              
+                      {/* Obtener todos los numeros de cuenta  */}
+              <select value={uidDestinatario} onChange={handleChange} className='input'>
+                <option value="" >Elije a quien le quieres enviar dinero</option>
+                {infoDocList.map((info) => (
+                  <option value={info.uid} key={info.uid}>{info.correo}</option>
+                ))
+                }
+              </select>
             </Box>
+
             <Box className='div'>
-              <Text className='label'>Nombre del beneficiario</Text>
-              <Input className='input' placeholder='Nombre del beneficiario' />
+              {/* <Text className='label'>Nombre del beneficiario</Text>
+              <Input className='input' placeholder='Nombre del beneficiario' /> */}
             </Box>
+
             <Box className='div'>
               <Text className='label'>Monto a transferir</Text>
-              <NumberInput className='input' min={0} max={saldo} onChange={(valueString) => setValue(parse(valueString))} value={format(value)}>
+              <NumberInput className='input' min={0} max={saldo} onChange={(valueString) => setDineroTransfer(parse(valueString))} value={format(value)}>
                 <NumberInputField />
               </NumberInput>
             </Box>
             <Box className='div'>
               <Stat>
                 <StatLabel className='label' >Balance disponible:</StatLabel>
-                <StatNumber>${saldo}</StatNumber>
+                <StatNumber>${currentUserSaldo}</StatNumber>
               </Stat>
             </Box>
             <Box className='div'>
               <Text className='label'>Comentario(Opcional)</Text>
-              <Textarea className='textarea' placeholder='Comentario...' />
+              <Textarea className='textarea' placeholder='Comentario...' onChange={e => setUserComment(e.target.value)}/>
             </Box>
           </Box>
-          <Button className="btn">Transferir</Button>
+          <Button className="btn" onClick={handleOnClickTransferMoney}>Transferir</Button>
         </Box>
       </Container>
     </>
   );
+
+  async function handleOnClickTransferMoney() {
+
+    //#region usuario loggeado
+    //Actualiza el saldo de quien envia el dinero 
+    const usersRefEnvia = doc(db, "users", userUid);
+      await updateDoc(usersRefEnvia, {
+      saldo: +currentUserSaldo- +value,
+    });
+    //#endregion
+
+    //#region Usuario Destinatario
+    //Obtener el saldo actual de quien recibira el dinero
+    let destiDatos = await getUserInfo(uidDestinatario);
+
+     //Actualiza el saldo de quien recibira dinero
+     const usersRefRecibe = doc(db, "users", uidDestinatario);
+     await updateDoc(usersRefRecibe, {
+     saldo: +destiDatos.saldo+ +value
+    });
+    //#endregion
+
+    await registerTransactionHistory({
+      envia: currentUserCorreo,
+      enviaUid: userUid,
+      enviaNumCuenta: currentUserNumeroCuenta,
+      recibe: destiDatos.correo,
+      recibeUid: uidDestinatario,
+      recibeNumCuenta: destiDatos.numeroCuenta,
+      comentario: userComment,
+      cantida: value,
+      fecha_realizada: serverTimestamp(),
+    });
+
+    //#region Prueba 
+    //console.log("Dinero a transferir: " + value);
+    //console.log("Saldo del usuario quien envia: " + currentUserSaldo);
+    //console.log("Saldo del usuario quien recibe: " + infoDocList2);
+    //const result1 = currentUserSaldo - value;
+    //const result2 = infoDestinatario + value;
+    //console.log("Saldo del usuario quien envia el dinero: " + result1);
+    //console.log("Saldo del usuario quien recibe el dinero: " + result2);
+    //info extra
+    // console.log("Comentario: " + userComment);
+    //console.log("uid de quien recibira el dinero: " + infoUserTransfer);
+    //console.log("Correo de quien envia el dinero: " + currentUserCorreo);
+    //#endregion
+
+    navigate("/dashboard");
+  }
+
+
+
 }

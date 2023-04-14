@@ -10,7 +10,10 @@ import { onAuthStateChanged } from "firebase/auth";
 
 export const Perfil = () => {
 
-  const [photoURL, setPhotoURL] = useState(undefined);
+  const [photoURL, setPhotoURL] = useState("");
+  const [photoDefault, setPhotoDefault] = useState("https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png");
+  //https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png
+
   const [currentUserNumeroCuenta, setCurrentUserNumeroCuenta] = useState(null);
   const [userEmail, setUserEmail] = useState(null);
   const [userName, setUserName] = useState(null);
@@ -30,7 +33,8 @@ export const Perfil = () => {
       setUserName(loggedUser.username);    
       setUserCedula(loggedUser.cedula); 
   
-      await setPhotoURL(loggedUser.profilePicture);
+      setPhotoURL(loggedUser.profilePicture);
+      console.log(photoURL);
     }
   }
 
@@ -39,7 +43,7 @@ export const Perfil = () => {
       <Container className='main' maxWidth='100%' mt='30px' mb='20px' centerContent>
         <Box className='data-card'>
           <Heading className='titulo'>Mi perfil</Heading>
-            <Avatar className="avatar" src={photoURL} alt="Avatar"/>
+            <Avatar className="avatar" src={photoURL} alt="Foto de perfil"/> 
           <Box className='data-container'>
             <Box className='data-div'>
               <Text className='text'>Usuario</Text>

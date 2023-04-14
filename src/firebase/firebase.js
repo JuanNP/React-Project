@@ -34,7 +34,7 @@ export async function registerNewUser(user) {
     try {
       const usersRef = collection(db, "users");
       await setDoc(doc(usersRef, user.uid), user);
-      console.log("El id de este documento es: " + user.uid);
+      //console.log("El id de este documento es: " + user.uid);
     } catch (e) {
       console.error("Error al añadir el documento: ", e);
     }
@@ -65,52 +65,8 @@ export async function updateItem(uid, cedula){
   const usersRef = doc(db, "users", uid);
   await updateDoc(usersRef, {
     cedula: cedula,
-  });
-
-  //#region Codigo de prueba
-    // ----------------------------------------------------------------
-    //              Funciona pero sobreescribe el documento
-    // const docRef = doc(db, "users", uid);
-    // const payload = { cedula };
-    // setDoc(docRef, payload);
-    // ----------------------------------------------------------------
-
-    // const q = query(collection(db, "users"), where("uid", "==", uid));
-    // const querySnapshot = await getDoc(q);
-
-    // await updateDoc(querySnapshot, {
-    //   cedula: cedula,
-    // })
-    // .then(() => {
-    //   console.log("Documento actualizado correctamente");
-    // })
-    // .catch((error) => {
-    //   console.error("Error al actualizar el documento: ", error);
-    // });
-
-    // const usersRef = collection(db, "users").doc("5JVJXkA5aENm9a34IVrAlAYUG4M2");
-    // const docSnap = await getDoc(usersRef);
-    // await updateDoc(docSnap, {
-    //   cedula: cedula
-    // });
-    //#endregion
-    
+  });  
 }
-
-// export async function fetchLinkData(uid) {
-//     const links = [];
-//     const q = query(collection(db, "links"), where("uid", "==", uid));
-  
-//     const querySnapshot = await getDocs(q);
-  
-//     querySnapshot.forEach((doc) => {
-//       const link = { ...doc.data() };
-//       link.docId = doc.id;
-//       console.log(link);
-//       links.push(link);
-//     });
-//     return links;
-// }
 
   export async function existsUsername(username) {
     const users = [];
@@ -128,4 +84,18 @@ export async function updateItem(uid, cedula){
   export async function logout() {
     await auth.signOut();
   }
+
+  export async function registerTransactionHistory(historial) {
+    var min = 171823;
+    var max = 342945;
+    let idDoc = Math.floor(Math.random()*(max-min+1)+min);
+
+    try {
+      const usersRef = collection(db, "transacciones");
+      await setDoc(doc(usersRef, idDoc.toString()), historial);
+      console.log("El id de este documento es: " + idDoc);
+    } catch (e) {
+      console.error("Error al añadir el documento: ", e);
+    }
+}
 

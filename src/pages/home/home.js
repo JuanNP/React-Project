@@ -11,24 +11,24 @@ import {
   Td,
   TableContainer,
 } from '@chakra-ui/react'
-
 import { 
   auth,
-  existsUsername,
   getUserInfo,
-  updateUser,
-  userExists,
-  updateItem, 
+  db, 
 } from "../../firebase/firebase";
 import { onAuthStateChanged } from "firebase/auth";
+import { collection, onSnapshot, query, where } from "firebase/firestore";
 
 export const Home = () => {
+  const navigate = useNavigate();
 
   const [currentUserNumeroCuenta, setCurrentUserNumeroCuenta] = useState(null);
   const [currentUserSaldo, setCurrentUserSaldo] = useState(null);
   const [currentUserTipoCuenta, setCurrentUserTipoCuenta] = useState(null);
 
-  const navigate = useNavigate();
+//Lista de todos los documentos de historial 
+  const [infoDocList, setInfoDocList] = useState([{ name: "", id: "" }]);
+  
 
   const nCuenta = currentUserNumeroCuenta;
   const saldo = currentUserSaldo;
@@ -43,7 +43,17 @@ export const Home = () => {
 
   useEffect(() => {
     onAuthStateChanged(auth, callBackAuthState);
-  }, []);
+    if(nCuenta){
+      const collectionRef = collection(db, "transacciones");
+      const q = query(collectionRef, where("enviaNumCuenta", "==", nCuenta));
+      
+      const unsub = onSnapshot(q, (snapshot) =>
+        setInfoDocList(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }))));
+      
+      return unsub;
+    }
+
+  }, [nCuenta]);
 
   async function callBackAuthState(user){
     if(user){
@@ -130,56 +140,20 @@ export const Home = () => {
               </Tr>
             </Thead>
             <Tbody>
-              <Tr>
-                <Td>{nCuentatercero} - {nombretercero}
+              {infoDocList.map((info) => (
+                <Tr>
+                <Td>{info.recibeNumCuenta} - {info.recibe}
                   <br/>
-                  {describcion}
+                  {info.comentario}
                   <br/>
                   <Text className='monto'>
-                  ${montoTransfer}
+                  $-{info.cantida}
                   </Text>
                 </Td>
               </Tr>
-              <Tr>
-                <Td>{nCuentatercero} - {nombretercero}
-                  <br/>
-                  {describcion}
-                  <br/>
-                  <Text className='monto'>
-                  ${montoTransfer}
-                  </Text>
-                </Td>
-              </Tr>
-              <Tr>
-                <Td>{nCuentatercero} - {nombretercero}
-                  <br/>
-                  {describcion}
-                  <br/>
-                  <Text className='monto'>
-                  ${montoTransfer}
-                  </Text>
-                </Td>
-              </Tr>
-              <Tr>
-                <Td>{nCuentatercero} - {nombretercero}
-                  <br/>
-                  {describcion}
-                  <br/>
-                  <Text className='monto'>
-                  ${montoTransfer}
-                  </Text>
-                </Td>
-              </Tr>
-              <Tr>
-                <Td>{nCuentatercero} - {nombretercero}
-                  <br/>
-                  {describcion}
-                  <br/>
-                  <Text className='monto'>
-                    ${montoTransfer}
-                  </Text>
-                </Td>
-              </Tr>
+              ))
+              }
+              
             </Tbody>
           </Table>
         </TableContainer>
