@@ -37,8 +37,8 @@ const TopBar = () => {
           _hover={{ textDecoration: 'none' }}
           onClick={() => navigate('/dashboard')}
         >
-          <HStack spacing='1' p='0.3vw'>
-              <RiBankFill size='2em'/>
+          <HStack spacing='1' p='0.2vw'>
+              <RiBankFill size='2.5em'/>
               <Heading size='xl'>Banca Web</Heading>
           </HStack>
         </Link>

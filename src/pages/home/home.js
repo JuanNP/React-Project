@@ -138,7 +138,7 @@ export const Home = () => {
             <Thead>
               <Tr>
                 <Th>
-                  Resumen de Pagos - <Link to='/pagos'>Ver más</Link>
+                  Resumen de Transacciones - <Link to='/transacciones'>Ver más</Link>
                 </Th>
               </Tr>
             </Thead>

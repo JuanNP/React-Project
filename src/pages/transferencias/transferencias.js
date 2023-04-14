@@ -10,7 +10,7 @@ import {
   registerTransactionHistory, 
 } from '../../firebase/firebase';
 import { useEffect, useState } from 'react';
-import { Container, Box, Input, Textarea, Button, NumberInput, Text, NumberInputField, Stat, StatLabel, StatNumber } from "@chakra-ui/react";
+import { Container, Box, Input, Textarea, Button, NumberInput, Text, NumberInputField, Stat, StatLabel, StatNumber, Select } from "@chakra-ui/react";
 import './transferencias.css' 
 import { 
   onSnapshot, 
@@ -111,13 +111,13 @@ export const Transferencias = () => {
               <Input className='input' placeholder='Numero de cuenta' /> */}
               
                       {/* Obtener todos los numeros de cuenta  */}
-              <select value={uidDestinatario} onChange={handleChange} className='input'>
-                <option value="" >Elije a quien le quieres enviar dinero</option>
+              <Text className='label'>Destinatario</Text>
+              <Select className='input' value={uidDestinatario} placeholder="Elije a quien le quieres enviar dinero" onChange={handleChange} isRequired>
                 {infoDocList.map((info) => (
                   <option value={info.uid} key={info.uid}>{info.correo}</option>
-                ))
+                )) 
                 }
-              </select>
+              </Select>
             </Box>
 
             <Box className='div'>

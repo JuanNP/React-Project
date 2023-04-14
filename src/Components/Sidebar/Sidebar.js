@@ -91,9 +91,9 @@ const BaseSideBar = ({ showText, onOpen, navigate, handleMouseOver, handleMouseO
                 <BiTransferAlt/>
                 {showText && <Text className='linkText'>Transferencias</Text>}
               </Link>
-              <Link className='MenuLink' onClick={() => navigate('/pagos')}>
+              <Link className='MenuLink' onClick={() => navigate('/transacciones')}>
                 <MdOutlineAttachMoney/>
-                {showText && <Text className='linkText'>Pagos</Text>}
+                {showText && <Text className='linkText'>Transacciones</Text>}
               </Link>
               {/* <Link className='MenuLink' onClick={() => navigate('/beneficiarios')}> 
                 <FaUserFriends/>
@@ -156,9 +156,9 @@ const BaseSideBar = ({ showText, onOpen, navigate, handleMouseOver, handleMouseO
                     <BiTransferAlt/>
                     <Text className='linkText'>Transferencias</Text>
                   </Link>
-                  <Link className='MenuLink' onClick={() => navigate('/pagos')}>
+                  <Link className='MenuLink' onClick={() => navigate('/transacciones')}>
                     <MdOutlineAttachMoney/>
-                    <Text className='linkText'>Pagos</Text>
+                    <Text className='linkText'>Transacciones</Text>
                   </Link>
                   <Link className='MenuLink' onClick={() => navigate('/beneficiarios')}>
                     <FaUserFriends/>

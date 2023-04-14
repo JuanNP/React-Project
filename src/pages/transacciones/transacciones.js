@@ -1,12 +1,12 @@
 import { Box, Container } from "@chakra-ui/react";
-import './pagos.css' 
+import './transacciones.css' 
 import { Table, Thead, Tbody, Tr, Th, Td, TableContainer, Text } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth, db, getUserInfo } from "../../firebase/firebase";
 import { collection, onSnapshot, query, where } from "firebase/firestore";
 
-export const Pagos = () => {
+export const Transacciones = () => {
 
   const [currentUserNumeroCuenta, setCurrentUserNumeroCuenta] = useState(null);
   const nCuenta = currentUserNumeroCuenta;
@@ -50,12 +50,12 @@ export const Pagos = () => {
   return (
     <>
       <Container className='main' maxWidth='100%' centerContent>
-        <Box className='pagos-contenedor'>
+        <Box className='transacciones-contenedor'>
           <TableContainer className='tablaContainer' borderRadius='10' borderStyle='solid' borderWidth='1px' borderColor='lightgrey' bg='white'>
             <Table className='tabla'>
               <Thead>
                 <Tr>
-                  <Th>Pagos</Th>
+                  <Th>Transacciones</Th>
                 </Tr>
               </Thead>
               <Tbody>

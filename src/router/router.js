@@ -2,7 +2,7 @@ import { createBrowserRouter } from 'react-router-dom';
 import Login from '../pages/login/login'
 import { Home } from '../pages/home/home'
 import { Transferencias } from '../pages/transferencias/transferencias'
-import { Pagos } from '../pages/pagos/pagos'
+import { Transacciones } from '../pages/transacciones/transacciones'
 import { Beneficiarios } from '../pages/beneficiarios/beneficiarios'
 import { Perfil } from '../pages/perfil/perfil'
 import Layout from '../Components/Layout/Layout';
@@ -24,8 +24,8 @@ export const ROUTER = createBrowserRouter([
         element:  <Transferencias /> ,
       },
       {
-        path: 'pagos',
-        element: <Pagos />,
+        path: 'transacciones',
+        element: <Transacciones />,
       },
       {
         path: 'beneficiarios',
