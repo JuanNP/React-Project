@@ -150,24 +150,26 @@ export const Transferencias = () => {
 
   async function handleOnClickTransferMoney() {
 
-    //#region usuario loggeado
-    //Actualiza el saldo de quien envia el dinero 
-    const usersRefEnvia = doc(db, "users", userUid);
-      await updateDoc(usersRefEnvia, {
-      saldo: +currentUserSaldo- +value,
-    });
-    //#endregion
+    if(uidDestinatario && value > 0) {
 
-    //#region Usuario Destinatario
-    //Obtener el saldo actual de quien recibira el dinero
-    let destiDatos = await getUserInfo(uidDestinatario);
+      //#region usuario loggeado
+      //Actualiza el saldo de quien envia el dinero 
+      const usersRefEnvia = doc(db, "users", userUid);
+        await updateDoc(usersRefEnvia, {
+        saldo: +currentUserSaldo- +value,
+      });
+      //#endregion
 
-     //Actualiza el saldo de quien recibira dinero
-     const usersRefRecibe = doc(db, "users", uidDestinatario);
-     await updateDoc(usersRefRecibe, {
-     saldo: +destiDatos.saldo+ +value
-    });
-    //#endregion
+      //#region Usuario Destinatario
+      //Obtener el saldo actual de quien recibira el dinero
+      let destiDatos = await getUserInfo(uidDestinatario);
+
+      //Actualiza el saldo de quien recibira dinero
+      const usersRefRecibe = doc(db, "users", uidDestinatario);
+      await updateDoc(usersRefRecibe, {
+      saldo: +destiDatos.saldo+ +value
+      });
+      //#endregion
 
     await registerTransactionHistory({
       envia: currentUserCorreo,
@@ -181,23 +183,11 @@ export const Transferencias = () => {
       fecha_realizada: serverTimestamp(),
     });
 
-    //#region Prueba 
-    //console.log("Dinero a transferir: " + value);
-    //console.log("Saldo del usuario quien envia: " + currentUserSaldo);
-    //console.log("Saldo del usuario quien recibe: " + infoDocList2);
-    //const result1 = currentUserSaldo - value;
-    //const result2 = infoDestinatario + value;
-    //console.log("Saldo del usuario quien envia el dinero: " + result1);
-    //console.log("Saldo del usuario quien recibe el dinero: " + result2);
-    //info extra
-    // console.log("Comentario: " + userComment);
-    //console.log("uid de quien recibira el dinero: " + infoUserTransfer);
-    //console.log("Correo de quien envia el dinero: " + currentUserCorreo);
-    //#endregion
-
     navigate("/dashboard");
+
+    }else{
+      alert("Debe llenar todos los campos requeridos ");
+    }
   }
-
-
 
 }
