@@ -67,10 +67,6 @@ export const ResponseSideBar = () => {
           <ModalContent>
             <ModalHeader>Seguro que quieres salir?</ModalHeader>
             <ModalCloseButton />
-            <ModalBody>
-              No te vayas!! :(
-            </ModalBody>
-
             <ModalFooter>
               <Button colorScheme='blue' onClick={handleload}>
                 Aceptar

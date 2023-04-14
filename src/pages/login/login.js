@@ -6,11 +6,12 @@ import {
 } from "../../firebase/firebase";
 import { useNavigate } from "react-router-dom";
 import AuthProvider from '../../Components/authProvider'
-import { Spinner } from '@chakra-ui/react';
+import { Spinner, Text } from '@chakra-ui/react';
 import { Grid, Container, Paper, Avatar, Typography , TextField, Button, Box } from '@material-ui/core'
 import{makeStyles} from '@material-ui/core/styles'
 import { LockOutlined as LockOutlinedIcon} from '@mui/icons-material'
 import { FcGoogle } from 'react-icons/fc'
+import './styles.css'
 
 /*
   Stages:
@@ -63,8 +64,12 @@ const useStyles = makeStyles(theme=>({
     }
   },
   Googlebutton:{
-    margin: theme.spacing(0,0,10),
+    margin: theme.spacing(5,0,10),
+    padding: theme.spacing(1.5,0,1.5),
     backgroundColor: '#fff',
+    borderColor: '#c8c8c8',
+    borderWidth: '1px',
+    borderStyle: 'solid',
     color: 'gray',
     '&:hover':{
       backgroundColor: '#fff',
@@ -106,11 +111,17 @@ const Login = () => {
             </Avatar>
             <Typography component='h1' variant='h5'>Sign In</Typography>
             <form className={classes.form}>
-              <TextField fullWidth autoFocus color='primary' margin='normal' variant='outlined' label='Introduzca su usuario' name='nombre'/>
+              {/* <TextField fullWidth autoFocus color='primary' margin='normal' variant='outlined' label='Introduzca su usuario' name='nombre'/>
               <TextField fullWidth type='password' color='primary' margin='normal' variant='outlined' label='Introduzca su contraseña' name='contra'/>
               <Button fullWidth variant='contained' className={classes.button}>
                   Sign In
-              </Button>
+              </Button> */}
+              <Typography component='h3' variant='h6' align='center'>
+                <br/>
+                Bienvenido a tu Web Bancaria de confianza
+                <br/>
+                Inicia sesion con Google ya!!
+              </Typography>
               <Button fullWidth variant='contained' className={classes.Googlebutton} onClick={() => handleOnClick()}>
                   <FcGoogle fontSize={'1.5rem'} />
                   <span style={{marginLeft: '20px'}}>Sign in with google</span>
@@ -131,7 +142,7 @@ const Login = () => {
         setState(4);
       }}
     >
-      <Container centerContent maxW='container' p={4} h='100vh' display='grid' placeItems='center'>
+      <Container className='spinner-container' centerContent maxW='container' p={4} h='100vh'>
         <Box>
           <Spinner
           thickness='4px'
