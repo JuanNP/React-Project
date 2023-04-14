@@ -29,16 +29,17 @@ export const Home = () => {
 //Lista de todos los documentos de historial 
   const [infoDocList, setInfoDocList] = useState([{ name: "", id: "" }]);
   
+  const [infoDocListRecibe, setInfoDocListRecibe] = useState([{ name: "", id: "" }]);
 
   const nCuenta = currentUserNumeroCuenta;
   const saldo = currentUserSaldo;
   const tipoCuenta = currentUserTipoCuenta;
 
   //#region Informacion de la tabla de resumen de pagos
-  const nCuentatercero = '0987654321'
-  const nombretercero = 'Juan Perez'
-  const describcion = 'Pago de servicios'
-  const montoTransfer = '100000'
+  // const nCuentatercero = '0987654321'
+  // const nombretercero = 'Juan Perez'
+  // const describcion = 'Pago de servicios'
+  // const montoTransfer = '100000'
   //#endregion
 
   useEffect(() => {
@@ -63,6 +64,16 @@ export const Home = () => {
       setCurrentUserNumeroCuenta(loggedUser.numeroCuenta);
       setCurrentUserSaldo(loggedUser.saldo); 
       setCurrentUserTipoCuenta(loggedUser.tipoCuenta);
+
+      if(nCuenta){
+        const collectionRef = collection(db, "transacciones");
+        const q = query(collectionRef, where("recibeNumCuenta", "==", nCuenta));
+        
+        const unsub = onSnapshot(q, (snapshot) =>
+          setInfoDocListRecibe(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }))));
+        
+        return unsub;
+      }
     }
   }
 
@@ -151,6 +162,20 @@ export const Home = () => {
                   </Text>
                 </Td>
               </Tr>
+              ))
+              }
+
+              {infoDocListRecibe.map((infoRecibe) => (
+                <Tr>
+                  <Td>{infoRecibe.enviaNumCuenta} - {infoRecibe.envia}
+                    <br/>
+                    {infoRecibe.comentario}
+                    <br/>
+                    <Text className='montoReci'>
+                    $+{infoRecibe.cantida}
+                    </Text>
+                  </Td>
+                </Tr>
               ))
               }
               

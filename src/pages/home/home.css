@@ -25,6 +25,12 @@ Tr {
     color: red;
 }
 
+.montoReci {
+    text-align: right;
+    font-size: 1.2em;
+    color: blue;
+}
+
 .card {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     margin-top: 10px;
