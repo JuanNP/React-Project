@@ -94,6 +94,8 @@ export const Home = () => {
                 >
                   {tipoCuenta}
                   <br/>
+                  Número de cuenta
+                  <br/>
                   {nCuenta}
                 </Text>
                 <Text
